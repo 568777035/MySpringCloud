@@ -1,0 +1,5 @@
+server:
+  port: 8867
+
+spring:
+  profiles: peer2
