@@ -17,3 +17,6 @@ management:
       cors:
         allowed-origins: "*"
         allowed-methods: "*"
+service:
+  tips-url: http://localhost:8767/
+

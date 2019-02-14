@@ -21,6 +21,7 @@
     <modules>
         <module>config-server</module>
         <module>eureka-server</module>
+        <module>service-common</module>
         <module>service-feign</module>
         <module>service-hello</module>
         <module>service-tips</module>
