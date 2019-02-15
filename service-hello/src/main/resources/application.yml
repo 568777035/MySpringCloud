@@ -18,5 +18,5 @@ management:
         allowed-origins: "*"
         allowed-methods: "*"
 service:
-  tips-url: http://localhost:8767/
+  tips-url: http://localhost:8762/
 

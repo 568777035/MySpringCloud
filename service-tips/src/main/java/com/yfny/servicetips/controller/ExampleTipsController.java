@@ -33,7 +33,8 @@ public class ExampleTipsController {
 
     @RequestMapping("/hello")
     @HystrixCommand(fallbackMethod = "hiError")
-    public String hello(@RequestParam(value = "name", defaultValue = "yfny") String name) {
+    public String hello (@RequestParam(value = "name", defaultValue = "yfny") String name) throws Exception{
+        Thread.sleep(3000);
         return "service-tips -- hello " + name + " ,i am from port:" + port;
     }
 
@@ -42,8 +43,14 @@ public class ExampleTipsController {
     }
 
     @RequestMapping("/excellent")
-    public String excellent() {
+    @HystrixCommand(fallbackMethod = "excellentError")
+    public String excellent() throws Exception{
+        Thread.sleep(3000);
         return "分数成绩优秀！";
+    }
+
+    public String excellentError() {
+        return "sorry,error!";
     }
 
     @RequestMapping("/good")
