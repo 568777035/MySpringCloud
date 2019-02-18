@@ -33,8 +33,8 @@ public class ExampleTipsController {
 
     @RequestMapping("/hello")
     @HystrixCommand(fallbackMethod = "hiError")
-    public String hello (@RequestParam(value = "name", defaultValue = "yfny") String name) throws Exception{
-        Thread.sleep(3000);
+    public String hello(@RequestParam(value = "name", defaultValue = "yfny") String name) throws Exception {
+        //Thread.sleep(3000);
         return "service-tips -- hello " + name + " ,i am from port:" + port;
     }
 
@@ -43,38 +43,40 @@ public class ExampleTipsController {
     }
 
     @RequestMapping("/excellent")
-    @HystrixCommand(fallbackMethod = "excellentError")
-    public String excellent() throws Exception{
-        Thread.sleep(3000);
+    @HystrixCommand
+    public String excellent() throws Exception {
+        //Thread.sleep(3000);
         return "分数成绩优秀！";
     }
 
-    public String excellentError() {
-        return "sorry,error!";
-    }
-
     @RequestMapping("/good")
+    @HystrixCommand
     public String good() {
         return "分数成绩良好！";
     }
 
     @RequestMapping("/pass")
+    @HystrixCommand
     public String pass() {
         return "分数成绩及格！";
     }
 
     @RequestMapping("/fail")
+    @HystrixCommand
     public String fail() {
         return "分数成绩不及格！";
     }
 
     @RequestMapping("/out")
+    @HystrixCommand
     public String out() {
         return "输入的分数不在规定范围内！";
     }
 
     @RequestMapping("/error")
+    @HystrixCommand
     public String error() {
         return "输入的内容不符合格式规范！";
     }
+
 }

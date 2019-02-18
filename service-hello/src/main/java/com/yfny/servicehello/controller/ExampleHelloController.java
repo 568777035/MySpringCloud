@@ -44,9 +44,10 @@ public class ExampleHelloController {
     }
 
     @RequestMapping("/grade")
+    @HystrixCommand
     public String grade(@RequestParam(value = "goal", defaultValue = "0") String goal) {
         LOG.log(Level.INFO, "calling trace service-tips");
-        String goalResult = restTemplate.getForObject(url + "example/error", String.class);
+        String goalResult = "";
         if (StringUtils.isNumeric(goal)) {
             double goalInt = Double.parseDouble(goal);
             if (goalInt >= 90 && goalInt <= 100) {
@@ -60,6 +61,8 @@ public class ExampleHelloController {
             } else {
                 goalResult = restTemplate.getForObject(url + "example/out", String.class);
             }
+        } else {
+            goalResult = restTemplate.getForObject(url + "example/error", String.class);
         }
         return goalResult;
     }
