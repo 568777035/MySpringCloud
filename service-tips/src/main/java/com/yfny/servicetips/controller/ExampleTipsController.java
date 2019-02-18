@@ -44,8 +44,8 @@ public class ExampleTipsController {
 
     @RequestMapping("/excellent")
     @HystrixCommand
-    public String excellent() throws Exception {
-        //Thread.sleep(3000);
+    public String excellent() {
+        int i = 1/0;
         return "分数成绩优秀！";
     }
 
