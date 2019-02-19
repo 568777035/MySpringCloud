@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 /**
+ * 示例用户Mapper
  * Created by jisongZhou on 2019/2/19.
  **/
 

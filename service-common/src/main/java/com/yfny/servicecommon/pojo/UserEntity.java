@@ -5,6 +5,7 @@ import com.yfny.servicecommon.enums.UserSexEnum;
 import java.io.Serializable;
 
 /**
+ * 示例用户对象
  * Created by jisongZhou on 2019/2/19.
  **/
 

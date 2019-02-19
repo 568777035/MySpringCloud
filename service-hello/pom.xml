@@ -24,7 +24,7 @@
             <artifactId>service-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <!-- eureka client依赖-->
+        <!-- eureka client依赖 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
