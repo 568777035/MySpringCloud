@@ -1,0 +1,23 @@
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+#server:
+#  port: 8768
+spring:
+  application:
+    name: service-common
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 1
+    timeout: 60s
+    jedis:
+      pool:
+        max-idle: 50
+        min-idle: 5
+        max-wait: -1s
+        max-active: -1
+  transaction:
+    rollback-on-commit-failure: true

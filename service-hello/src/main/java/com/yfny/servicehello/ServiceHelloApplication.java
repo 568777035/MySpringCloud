@@ -10,6 +10,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
@@ -19,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableHystrixDashboard
 @EnableCircuitBreaker
 @MapperScan("com.yfny.servicehello.mapper")
+@ComponentScan(basePackages = {"com.yfny.**.**"})
 public class ServiceHelloApplication {
 
     /**

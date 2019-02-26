@@ -1,5 +1,8 @@
 package com.yfny.servicehello.service;
 
+import com.yfny.servicecommon.redis.CacheKey;
+import com.yfny.servicecommon.redis.Cacheable;
+import com.yfny.servicecommon.redis.CommonCacheTime;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +18,8 @@ public class ExampleHelloServiceImpl {
     @Value("${server.port}")
     String port;
 
-    public String hello(String name) {
+    @Cacheable(expire = CommonCacheTime.ONE_DAY)
+    public String hello(@CacheKey String name) {
         return "service-hello -- hello " + name + " ,i am from port:" + port;
     }
 }
