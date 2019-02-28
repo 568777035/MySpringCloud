@@ -13,4 +13,5 @@ import java.lang.annotation.Target;
 @Target({ElementType.PARAMETER})
 public @interface CacheKey {
 
+    public String field() default "";    //键值包含字段名
 }

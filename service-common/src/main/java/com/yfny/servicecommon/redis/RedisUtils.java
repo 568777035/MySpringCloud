@@ -1,5 +1,6 @@
 package com.yfny.servicecommon.redis;
 
+import org.springframework.data.redis.connection.DataType;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.CollectionUtils;
 
@@ -12,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * Redis工具类
  * Created by jisongZhou on 2019/2/25.
  **/
-public class RedisUtil {
+public class RedisUtils {
 
     private RedisTemplate<String, Object> redisTemplate;
 
@@ -49,6 +50,17 @@ public class RedisUtil {
      */
     public long getExpire(String key) {
         return redisTemplate.getExpire(key, TimeUnit.SECONDS);
+    }
+
+
+    /**
+     * 获取键值所对应值的存储类型
+     *
+     * @param key 键 不能为null
+     * @return 数据类型
+     */
+    public DataType getType(String key) {
+        return redisTemplate.type(key);
     }
 
     /**
@@ -137,8 +149,8 @@ public class RedisUtil {
     /**
      * 递增
      *
-     * @param key 键
-     * @param delta  要增加几(大于0)
+     * @param key   键
+     * @param delta 要增加几(大于0)
      * @return
      */
     public long incr(String key, long delta) {
@@ -151,8 +163,8 @@ public class RedisUtil {
     /**
      * 递减
      *
-     * @param key 键
-     * @param delta  要减少几(小于0)
+     * @param key   键
+     * @param delta 要减少几(小于0)
      * @return
      */
     public long decr(String key, long delta) {

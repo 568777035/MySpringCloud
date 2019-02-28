@@ -20,11 +20,11 @@ public @interface Cacheable {
         ALL;        //所有参数都加入key后缀
     }
 
+    public String type() default "";    //业务类型
+
     public String key() default "";     //缓存key
 
     public KeyMode keyMode() default KeyMode.DEFAULT;    //key的后缀模式
-
-    public String type() default "";    //业务类型
 
     public int expire() default 0;      //缓存多少秒,默认无限期
 }

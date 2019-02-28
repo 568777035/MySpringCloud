@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,6 +38,18 @@ public class ExampleHelloController {
     @HystrixCommand(fallbackMethod = "hiError")
     public String hello(@RequestParam(value = "name", defaultValue = "yfny") String name) {
         return exampleHelloService.hello(name);
+    }
+
+    @RequestMapping("/meet")
+    @HystrixCommand
+    public List<String> meet(@RequestParam(value = "name", defaultValue = "yfny") String name) {
+        return exampleHelloService.meet(name);
+    }
+
+    @RequestMapping("/goodbye")
+    @HystrixCommand
+    public String goodbye(@RequestParam(value = "name", defaultValue = "yfny") String name) {
+        return exampleHelloService.goodbye(name);
     }
 
     public String hiError(String name) {

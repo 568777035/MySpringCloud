@@ -21,8 +21,8 @@ public class RedisConfig {
      * @return
      */
     @Bean(name = "redisUtil")
-    public RedisUtil redisUtil(RedisTemplate<String, Object> redisTemplate) {
-        RedisUtil redisUtil = new RedisUtil();
+    public RedisUtils redisUtil(RedisTemplate<String, Object> redisTemplate) {
+        RedisUtils redisUtil = new RedisUtils();
         redisUtil.setRedisTemplate(redisTemplate);
         return redisUtil;
     }
@@ -56,5 +56,5 @@ public class RedisConfig {
         redisTemplate.setEnableTransactionSupport(true);
         redisTemplate.setConnectionFactory(factory);
     }
-    
+
 }
