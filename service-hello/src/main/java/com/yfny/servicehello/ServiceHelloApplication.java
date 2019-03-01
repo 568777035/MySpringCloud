@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableHystrix
 @EnableHystrixDashboard
 @EnableCircuitBreaker
-@MapperScan("com.yfny.servicehello.mapper")
+//@MapperScan("com.yfny.servicehello.mapper")//这个注解扫描不到通用Mapper，所以建议在Mapper上加@Mapper
 @ComponentScan(basePackages = {"com.yfny.**.**"})
 public class ServiceHelloApplication {
 

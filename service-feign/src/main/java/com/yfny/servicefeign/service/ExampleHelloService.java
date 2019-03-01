@@ -1,7 +1,9 @@
 package com.yfny.servicefeign.service;
 
+import com.yfny.servicecommon.pojo.UserEntity;
 import com.yfny.servicefeign.fallback.ExampleHelloServiceHystric;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,4 +22,8 @@ public interface ExampleHelloService {
     @RequestMapping(value = "/exampleHello/grade", method = RequestMethod.GET)
     String grade(@RequestParam(value = "goal") String goal);
 
+
+    //登陆
+    @GetMapping(value = "/user/login")
+    public UserEntity login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password);
 }

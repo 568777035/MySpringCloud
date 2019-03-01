@@ -1,7 +1,9 @@
 package com.yfny.servicefeign.service;
 
+import com.yfny.servicecommon.pojo.OrderEntity;
 import com.yfny.servicefeign.fallback.ExampleTipsServiceHystric;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,5 +36,8 @@ public interface ExampleTipsService {
 
     @RequestMapping(value = "/exampleTips/error", method = RequestMethod.GET)
     String error();
+
+    @GetMapping("/order/getOrderByPermission")
+    public OrderEntity getOrderByPermission(@RequestParam(value = "permission") String permission);
 
 }

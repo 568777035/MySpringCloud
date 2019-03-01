@@ -1,5 +1,6 @@
 package com.yfny.servicefeign.fallback;
 
+import com.yfny.servicecommon.pojo.OrderEntity;
 import com.yfny.servicefeign.service.ExampleTipsService;
 import org.springframework.stereotype.Component;
 
@@ -44,5 +45,11 @@ public class ExampleTipsServiceHystric implements ExampleTipsService {
     @Override
     public String error() {
         return "服务接口 [error] 挂掉了！";
+    }
+
+
+    @Override
+    public OrderEntity getOrderByPermission(String permission) {
+        return null;
     }
 }
