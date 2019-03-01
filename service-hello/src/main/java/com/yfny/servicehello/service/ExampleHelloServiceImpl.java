@@ -23,6 +23,7 @@ public class ExampleHelloServiceImpl {
 
     @Cacheable(expire = CommonCacheTime.ONE_DAY)
     public String hello(@CacheKey String name) {
+        System.out.println("hello 没有执行缓存");
         return "service-hello -- hello " + name + " ,i am from port:" + port;
     }
 
@@ -34,6 +35,7 @@ public class ExampleHelloServiceImpl {
             String value = name + "和" + people + "碰面了。";
             list.add(value);
         }
+        System.out.println("meet 没有执行缓存");
         return list;
     }
 

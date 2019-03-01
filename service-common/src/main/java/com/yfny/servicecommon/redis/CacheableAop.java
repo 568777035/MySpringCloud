@@ -29,6 +29,7 @@ public class CacheableAop implements Ordered {
     @Around("@annotation(cache)")
     public Object cached(final ProceedingJoinPoint pjp, Cacheable cache) throws Throwable {
         Object value = null;
+        List<Object> valueList = null;
         int i = 0;
         try {
             String key = getCacheKey(pjp, cache);
@@ -36,19 +37,22 @@ public class CacheableAop implements Ordered {
             if (dataType == DataType.STRING) {
                 value = redisUtil.get(key); // 从缓存获取数据
             } else if (dataType == DataType.LIST) {
-                value = redisUtil.lGet(key, 0, -1);
+                valueList = redisUtil.lGet(key, 0, -1);
             }
-
+            // 如果有数据,则直接返回
             if (value != null) {
-                return value; // 如果有数据,则直接返回
+                return value;
+            } else if (valueList != null) {
+                return valueList;
             }
 
             value = pjp.proceed(); // 跳过缓存,到后端查询数据
             if (value instanceof List) {
+                valueList = (List<Object>) value;
                 if (cache.expire() <= 0) { // 如果没有设置过期时间,则无限期缓存
-                    redisUtil.lSet(key, value);
+                    redisUtil.lSet(key, valueList);
                 } else { // 否则设置缓存时间
-                    redisUtil.lSet(key, value, cache.expire());
+                    redisUtil.lSet(key, valueList, cache.expire());
                 }
             } else {
                 if (cache.expire() <= 0) { // 如果没有设置过期时间,则无限期缓存
