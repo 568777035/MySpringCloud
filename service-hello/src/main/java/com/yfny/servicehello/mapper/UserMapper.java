@@ -1,7 +1,7 @@
 package com.yfny.servicehello.mapper;
 
-import com.yfny.servicecommon.pojo.UserEntity;
 import com.yfny.servicecommon.enums.UserSexEnum;
+import com.yfny.servicecommon.pojo.UserEntity;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 import tk.mybatis.mapper.common.BaseMapper;
@@ -12,7 +12,6 @@ import java.util.List;
  * 示例用户Mapper
  * Created by jisongZhou on 2019/2/19.
  **/
-@Mapper //记得要加这个Mapper注解，会报错
 public interface UserMapper extends BaseMapper<UserEntity> {
 
 //    @Select("SELECT * FROM users")
@@ -49,14 +48,15 @@ public interface UserMapper extends BaseMapper<UserEntity> {
 
     /**
      * 查询用户详细信息(一对一)
+     *
      * @return
      */
     @Select("select * from user")
     @Results({
             //一定要加这句，要不然查询不到id的值
-            @Result(id=true, column="id", property="id"),
+            @Result(id = true, column = "id", property = "id"),
             //属性字段对应数据库的列
-            @Result(property = "userSex",  column = "user_sex", javaType = UserSexEnum.class),
+            @Result(property = "userSex", column = "user_sex", javaType = UserSexEnum.class),
             @Result(property = "nickName", column = "nick_name"),
             @Result(property = "userName", column = "user_name"),
             @Result(property = "passWord", column = "pass_word"),
@@ -68,17 +68,16 @@ public interface UserMapper extends BaseMapper<UserEntity> {
             //@One(select = "方法全路径) 表示我们调用的方法，fetchType表示查询类型是立即加载（EAGER）还是懒加载（LAZY）
             @Result(property = "detailsEntity",
                     column = "id",
-                    one = @One(select = "com.yfny.servicehello.mapper.DetailsMapper.getDetailsByUserId",fetchType= FetchType.EAGER)),
+                    one = @One(select = "com.yfny.servicehello.mapper.DetailsMapper.getDetailsByUserId", fetchType = FetchType.EAGER)),
 //            property = “cars”, 表示要将返回的查询结果赋值给user的cars属性
 //            column = “id” 是指将user表中的用户主键id作为com.yfny.servicehello.mapper.CarMapper.findCarByUserId的查询参数
 //            many 表示这是一个一对多的查询
 //            @Many(select = "方法全路径) 表示我们调用的方法, 方法参数userId就是上面column指定的列值
             @Result(property = "carEntities",
                     column = "id",
-                    many = @Many(select = "com.yfny.servicehello.mapper.CarMapper.findCarByUserId",fetchType= FetchType.EAGER))
+                    many = @Many(select = "com.yfny.servicehello.mapper.CarMapper.findCarByUserId", fetchType = FetchType.EAGER))
     })
     public List<UserEntity> selectAllUser();
-
 
 
     /**
@@ -87,18 +86,18 @@ public interface UserMapper extends BaseMapper<UserEntity> {
      */
     @Select("select * from user where id = #{id}")
     @Results({
-            @Result(id=true, column="id", property="id"),
-            @Result(property = "userSex",  column = "user_sex", javaType = UserSexEnum.class),
+            @Result(id = true, column = "id", property = "id"),
+            @Result(property = "userSex", column = "user_sex", javaType = UserSexEnum.class),
             @Result(property = "nickName", column = "nick_name"),
             @Result(property = "userName", column = "user_name"),
             @Result(property = "passWord", column = "pass_word"),
             @Result(property = "permission", column = "permission"),
             @Result(property = "detailsEntity",
                     column = "id",
-                    one = @One(select = "com.yfny.servicehello.mapper.DetailsMapper.getDetailsByUserId",fetchType= FetchType.EAGER)),
+                    one = @One(select = "com.yfny.servicehello.mapper.DetailsMapper.getDetailsByUserId", fetchType = FetchType.EAGER)),
             @Result(property = "carEntities",
                     column = "id",
-                    many = @Many(select = "com.yfny.servicehello.mapper.CarMapper.findCarByUserId",fetchType= FetchType.EAGER))
+                    many = @Many(select = "com.yfny.servicehello.mapper.CarMapper.findCarByUserId", fetchType = FetchType.EAGER))
     })
     public UserEntity selectUserAllById(long id);
 
@@ -110,16 +109,16 @@ public interface UserMapper extends BaseMapper<UserEntity> {
      */
     @Select("select * from user where user_name = #{username} and pass_word = #{password}")
     @Results({
-            @Result(id=true, column="id", property="id"),
-            @Result(property = "userSex",  column = "user_sex", javaType = UserSexEnum.class),
+            @Result(id = true, column = "id", property = "id"),
+            @Result(property = "userSex", column = "user_sex", javaType = UserSexEnum.class),
             @Result(property = "nickName", column = "nick_name"),
             @Result(property = "userName", column = "user_name"),
             @Result(property = "passWord", column = "pass_word"),
             @Result(property = "permission", column = "permission"),
             @Result(property = "detailsEntity", column = "id",
-                    one = @One(select = "com.yfny.servicehello.mapper.DetailsMapper.getDetailsByUserId",fetchType= FetchType.EAGER)),
+                    one = @One(select = "com.yfny.servicehello.mapper.DetailsMapper.getDetailsByUserId", fetchType = FetchType.EAGER)),
             @Result(property = "carEntities", column = "id",
-                    many = @Many(select = "com.yfny.servicehello.mapper.CarMapper.findCarByUserId",fetchType= FetchType.EAGER))
+                    many = @Many(select = "com.yfny.servicehello.mapper.CarMapper.findCarByUserId", fetchType = FetchType.EAGER))
     })
     public UserEntity isLogin(String username, String password);
 

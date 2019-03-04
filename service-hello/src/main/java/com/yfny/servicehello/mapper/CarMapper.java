@@ -1,7 +1,6 @@
 package com.yfny.servicehello.mapper;
 
 import com.yfny.servicecommon.pojo.CarEntity;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -13,7 +12,6 @@ import java.util.List;
  * 实例用户拥有车辆详细信息carMapper
  * Created by zileShi on 2019/2/26.
  **/
-@Mapper
 public interface CarMapper extends BaseMapper<CarEntity> {
 
     /**
@@ -21,7 +19,7 @@ public interface CarMapper extends BaseMapper<CarEntity> {
      */
     @Select("select * from car where userId = #{userId}")
     @Results({
-            @Result(id=true, column="id", property="id"),
+            @Result(id = true, column = "id", property = "id"),
             @Result(property = "color", column = "color"),
             @Result(property = "name", column = "name"),
             @Result(property = "userId", column = "userId"),
