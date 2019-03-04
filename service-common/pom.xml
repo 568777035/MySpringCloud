@@ -17,7 +17,11 @@
     </parent>
 
     <properties>
-        <java.version>1.8</java.version>
+        <aspectjweaver.version>1.8.13</aspectjweaver.version>
+        <guava.version>27.0.1-jre</guava.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <json.version>20180813</json.version>
+        <persistence-api.version>1.0</persistence-api.version>
     </properties>
 
     <dependencies>
@@ -40,33 +44,32 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.8.13</version>
+            <version>${aspectjweaver.version}</version>
         </dependency>
         <!-- Google辅助优化工具依赖 -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>27.0.1-jre</version>
+            <version>${guava.version}</version>
         </dependency>
         <!-- Apache工具类依赖 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.5</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
         <!-- json依赖 -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20180813</version>
+            <version>${json.version}</version>
         </dependency>
-
         <!--Java Persistence API定义了一种定义，
         可以将常规的普通Java对象（有时被称作POJO）映射到数据库。-->
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
-            <version>1.0</version>
+            <version>${persistence-api.version}</version>
         </dependency>
 
     </dependencies>
