@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.io.UnsupportedEncodingException;
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -355,6 +356,18 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
             s = s.replaceAll("\"", "\\\\\\\"");
         }
         return s;
+    }
+
+    /**
+     * 替换字符串中的占位符
+     *
+     * @param message 待替换信息
+     * @param params  替换参数
+     * @return 替换结果
+     */
+    public static String replaceMessage(String message, String[] params) {
+        return params == null ? message : MessageFormat.format(message,
+                params);
     }
 }
 

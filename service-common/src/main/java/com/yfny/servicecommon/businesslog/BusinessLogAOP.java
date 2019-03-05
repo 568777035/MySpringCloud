@@ -1,7 +1,7 @@
-package com.yfny.servicecommon.businesslogaop;
+package com.yfny.servicecommon.businesslog;
 
-import com.yfny.servicecommon.util.InvokeResult;
 import com.yfny.servicecommon.util.PropertiesLoader;
+import com.yfny.servicecommon.util.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -34,7 +34,7 @@ public class BusinessLogAOP implements Ordered {
 
     private Instant afterTime = null;
 
-    @Pointcut("@annotation(com.yfny.servicecommon.businesslogaop.BusinessLog)")
+    @Pointcut("@annotation(com.yfny.servicecommon.businesslog.BusinessLog)")
     public void annotationPointCut() {
     }
 
@@ -90,14 +90,12 @@ public class BusinessLogAOP implements Ordered {
         String[] params = new String[]{username, currentTime, timeDifference};
 
         //整合业务信息
-        String businessMessage = InvokeResult.getMsg(message, params);
+        String businessMessage = StringUtils.replaceMessage(message, params);
 
         //输出到指定文件上，具体看service-feign的logback.xml配置
         logger.debug(businessMessage);
 
     }
-
-
 
     @Override
     public int getOrder() {

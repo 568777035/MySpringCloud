@@ -1,4 +1,4 @@
-package com.yfny.servicecommon.businesslogaop;
+package com.yfny.servicecommon.businesslog;
 
 
 import java.lang.annotation.*;

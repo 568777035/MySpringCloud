@@ -78,17 +78,6 @@ public class InvokeResult<T> {
                 params);
     }
 
-    /**
-     * 从配置文件中获取错误信息
-     * @param message
-     * @param params
-     * @return
-     */
-    public static String getMsg(String message, String[] params) {
-        return params == null ? message : MessageFormat.format(message,
-                params);
-    }
-
     public String getCode() {
         return code;
     }

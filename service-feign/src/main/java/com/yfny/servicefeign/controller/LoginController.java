@@ -1,6 +1,6 @@
 package com.yfny.servicefeign.controller;
 
-import com.yfny.servicecommon.businesslogaop.BusinessLog;
+import com.yfny.servicecommon.businesslog.BusinessLog;
 import com.yfny.servicecommon.pojo.OrderEntity;
 import com.yfny.servicecommon.pojo.UserEntity;
 import com.yfny.servicefeign.service.ExampleHelloService;
