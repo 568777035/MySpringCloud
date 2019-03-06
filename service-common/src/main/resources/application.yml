@@ -21,3 +21,14 @@ spring:
         max-active: -1
   transaction:
     rollback-on-commit-failure: true
+
+author: auto
+packageName: com.yfny.servicecommon
+path:
+  controller: controller
+  service: service.impl
+  interf: service
+  dao: dao
+  entity: entity
+  mapper: mappers
+  basetest: base

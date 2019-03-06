@@ -22,6 +22,7 @@
         <commons-lang3.version>3.5</commons-lang3.version>
         <json.version>20180813</json.version>
         <persistence-api.version>1.0</persistence-api.version>
+        <generator.version>1.2.1</generator.version>
     </properties>
 
     <dependencies>
@@ -64,14 +65,42 @@
             <artifactId>json</artifactId>
             <version>${json.version}</version>
         </dependency>
-        <!--Java Persistence API定义了一种定义，
-        可以将常规的普通Java对象（有时被称作POJO）映射到数据库。-->
+        <!-- Java Persistence API定义了一种定义，
+        可以将常规的普通Java对象（有时被称作POJO）映射到数据库 -->
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
             <version>${persistence-api.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.sonatype.oss</groupId>
+            <artifactId>oss-parent</artifactId>
+            <version>9</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.28</version>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.24</version>
+        </dependency>
+
+        <!-- mysql数据库驱动 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.47</version>
+        </dependency>
     </dependencies>
 
 </project>
