@@ -6,7 +6,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
- *  示例菜单对象
+ * 示例菜单对象
  * Created by zileShi on 2019/2/28.
  **/
 @Table(name = "`order`")
