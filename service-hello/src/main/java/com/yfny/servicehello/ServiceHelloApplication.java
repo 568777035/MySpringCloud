@@ -1,7 +1,6 @@
 package com.yfny.servicehello;
 
 import brave.sampler.Sampler;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -12,6 +11,7 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
+import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @EnableEurekaClient
@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableHystrix
 @EnableHystrixDashboard
 @EnableCircuitBreaker
-@MapperScan({"com.yfny.servicehello.mapper","tk.mybatis.mapper.common.base"})
+@MapperScan({"com.yfny.servicehello.mapper", "tk.mybatis.mapper.common.base"})
 @ComponentScan(basePackages = {"com.yfny.**.**"})
 public class ServiceHelloApplication {
 

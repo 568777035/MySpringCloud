@@ -9,7 +9,7 @@ import java.io.Serializable;
  *  示例菜单对象
  * Created by zileShi on 2019/2/28.
  **/
-@Table(name = "order")
+@Table(name = "`order`")
 public class OrderEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

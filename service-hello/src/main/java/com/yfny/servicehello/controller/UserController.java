@@ -109,7 +109,7 @@ public class UserController {
      * @param id
      * @return
      */
-    @PostMapping(value = "deleteById")
+    @PostMapping(value = "/deleteById")
     @ResponseBody
     public boolean deleteById(@RequestParam(value = "id") long id) {
         return userService.deleteUserById(id);
