@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Author GreedyStar
- * Date   2018/4/20
- */
+ * 代码生成器Mapper任务
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class MapperTask extends AbstractTask {
 
     /**

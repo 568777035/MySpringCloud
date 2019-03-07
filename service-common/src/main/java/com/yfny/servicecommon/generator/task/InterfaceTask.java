@@ -14,9 +14,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Author GreedyStar
- * Date   2019/1/24
- */
+ * 代码生成器接口任务
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class InterfaceTask extends AbstractTask {
 
     public InterfaceTask(String className) {

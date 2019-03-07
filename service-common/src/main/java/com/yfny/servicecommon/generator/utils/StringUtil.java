@@ -3,9 +3,9 @@ package com.yfny.servicecommon.generator.utils;
 import java.io.File;
 
 /**
- * Author GreedyStar
- * Date   2018-09-10
- */
+ * 代码生成器字符串工具
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class StringUtil {
 
     public static boolean isBlank(String string) {

@@ -7,9 +7,9 @@ import java.util.List;
 
 
 /**
- * Author GreedyStar
- * Date   2018/4/19
- */
+ * 代码生成器数据表解析
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class GeneratorUtil {
 
 

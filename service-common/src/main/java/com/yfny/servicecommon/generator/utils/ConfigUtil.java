@@ -7,9 +7,9 @@ import java.io.InputStream;
 import java.net.URL;
 
 /**
- * Author GreedyStar
- * Date   2018/9/7
- */
+ * 代码生成器测配置获取工具
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class ConfigUtil {
     private static Configuration configuration;
 

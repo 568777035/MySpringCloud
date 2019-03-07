@@ -15,9 +15,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Author GreedyStar
- * Date   2018/9/5
- */
+ * 代码生成器抽象调度器
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public abstract class AbstractInvoker implements Invoker {
     protected String tableName;
     protected String className;

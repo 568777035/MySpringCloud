@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Author GreedyStar
- * Date   2018/4/19
- */
+ * 数据库连接工具
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class ConnectionUtil {
     private Connection connection;
     private Statement statement;

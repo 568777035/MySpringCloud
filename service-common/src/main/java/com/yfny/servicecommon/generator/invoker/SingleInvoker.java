@@ -9,9 +9,9 @@ import com.yfny.servicecommon.generator.utils.StringUtil;
 import java.sql.SQLException;
 
 /**
- * Author GreedyStar
- * Date   2018/9/5
- */
+ * 代码生成器单体调度器
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class SingleInvoker extends AbstractInvoker {
 
     @Override

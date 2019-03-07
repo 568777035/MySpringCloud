@@ -1,9 +1,9 @@
 package com.yfny.servicecommon.generator.invoker.base;
 
 /**
- * Author GreedyStar
- * Date   2018-09-10
- */
+ * 代码生成器调度接口
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public interface Invoker {
 
     public void execute();

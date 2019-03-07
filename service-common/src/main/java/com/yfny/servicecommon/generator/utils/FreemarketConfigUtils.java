@@ -6,6 +6,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
+/**
+ * 代码生成器配置获取工具
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class FreemarketConfigUtils {
     private static String path = new File(FreemarketConfigUtils.class.getClassLoader().getResource("ftls").getFile()).getPath();
     public final static int TYPE_ENTITY = 0;

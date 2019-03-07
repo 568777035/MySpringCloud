@@ -14,9 +14,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Author GreedyStar
- * Date   2018/4/20
- */
+ * 代码生成器数据交换层任务
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class DaoTask extends AbstractTask {
 
     public DaoTask(String className) {

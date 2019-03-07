@@ -3,9 +3,9 @@ package com.yfny.servicecommon.generator.entity;
 import java.io.Serializable;
 
 /**
- * Author GreedyStar
- * Date   2018/9/7
- */
+ * 代码生成器参数配置类
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class Configuration implements Serializable {
     private String author;
     private String packageName;

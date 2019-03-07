@@ -5,9 +5,9 @@ import com.yfny.servicecommon.generator.utils.StringUtil;
 import java.io.Serializable;
 
 /**
- * Author GreedyStar
- * Date   2018/4/19
- */
+ * 代码生成器数据表字段类
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class ColumnInfo implements Serializable {
     private String columnName; // 列名
     private int type; // 类型代码

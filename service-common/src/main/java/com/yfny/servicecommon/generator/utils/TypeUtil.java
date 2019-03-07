@@ -3,9 +3,9 @@ package com.yfny.servicecommon.generator.utils;
 import java.sql.Types;
 
 /**
- * Author GreedyStar
- * Date   2018/4/19
- */
+ * 代码生成器数据类型工具
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class TypeUtil {
 
     /**

@@ -8,9 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Author GreedyStar
- * Date   2018-11-27
- */
+ * 代码生成器任务执行
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class TaskQueue {
 
     private LinkedList<AbstractTask> taskQueue = new LinkedList<>();

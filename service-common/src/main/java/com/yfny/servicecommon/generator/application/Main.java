@@ -7,9 +7,9 @@ import com.yfny.servicecommon.generator.invoker.TestInvoker;
 import com.yfny.servicecommon.generator.invoker.base.Invoker;
 
 /**
- * Author GreedyStar
- * Date   2018/9/5
- */
+ * 代码生成器测试主类
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class Main {
 
     public static void main(String[] args) {

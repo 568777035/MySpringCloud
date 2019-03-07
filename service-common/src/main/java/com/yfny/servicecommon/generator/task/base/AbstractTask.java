@@ -11,9 +11,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Author GreedyStar
- * Date   2018/4/20
- */
+ * 代码生成器抽象任务
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public abstract class AbstractTask implements Serializable {
     protected String tableName;
     protected String className;

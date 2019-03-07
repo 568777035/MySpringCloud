@@ -6,9 +6,9 @@ import freemarker.template.TemplateException;
 import java.io.*;
 
 /**
- * Author GreedyStar
- * Date   2018/4/19
- */
+ * 代码生成器文件生成
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class FileUtil {
 
     /**

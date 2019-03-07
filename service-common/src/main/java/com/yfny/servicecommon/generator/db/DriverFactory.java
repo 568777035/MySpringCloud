@@ -1,9 +1,9 @@
 package com.yfny.servicecommon.generator.db;
 
 /**
- * Author GreedyStar
- * Date   2018-10-24
- */
+ * 数据库驱动工厂
+ * Created by jisongZhou on 2019/3/5.
+ **/
 public class DriverFactory {
     private final static String DRIVER_MYSQL = "com.mysql.jdbc.Driver";
     private final static String DRIVER_ORACLE = "oracle.jdbc.driver.OracleDriver";

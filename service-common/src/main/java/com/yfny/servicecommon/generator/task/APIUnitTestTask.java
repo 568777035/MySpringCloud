@@ -14,9 +14,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Author GreedyStar
- * Date   2018/4/20
- */
+ * 代码生成器API单元测试任务
+ * Created by jisongZhou on 2019/3/7.
+ **/
 public class APIUnitTestTask extends AbstractTask {
 
     public APIUnitTestTask(String className) {

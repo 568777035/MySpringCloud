@@ -7,6 +7,7 @@ import com.yfny.servicecommon.generator.invoker.base.Invoker;
 import java.sql.SQLException;
 
 /**
+ * 代码生成器单元测试调度器
  * Created by jisongZhou on 2019/3/7.
  **/
 public class TestInvoker extends AbstractInvoker {
