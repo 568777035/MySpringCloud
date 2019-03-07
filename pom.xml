@@ -22,12 +22,13 @@
         <module>config-server</module>
         <module>eureka-server</module>
         <module>service-common</module>
+        <module>service-pojo</module>
         <module>service-feign</module>
         <module>service-hello</module>
         <module>service-tips</module>
         <module>service-turbine</module>
         <module>service-zuul</module>
-        <module>activitiy-api</module>
+        <module>activity-api</module>
     </modules>
 
     <properties>

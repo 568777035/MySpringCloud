@@ -1,6 +1,6 @@
-package com.yfny.activitiyapi.controller;
+package com.yfny.activityapi.controller;
 
-import com.yfny.activitiyapi.utils.ActivitiUtils;
+import com.yfny.activityapi.utils.ActivitiUtils;
 import org.activiti.engine.*;
 import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.impl.util.json.JSONArray;

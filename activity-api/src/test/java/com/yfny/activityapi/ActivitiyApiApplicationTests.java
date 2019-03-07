@@ -1,4 +1,4 @@
-package com.yfny.activitiyapi;
+package com.yfny.activityapi;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

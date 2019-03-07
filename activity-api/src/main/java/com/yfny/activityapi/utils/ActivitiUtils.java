@@ -1,4 +1,4 @@
-package com.yfny.activitiyapi.utils;
+package com.yfny.activityapi.utils;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;

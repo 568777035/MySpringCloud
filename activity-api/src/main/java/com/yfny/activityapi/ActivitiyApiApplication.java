@@ -1,4 +1,4 @@
-package com.yfny.activitiyapi;
+package com.yfny.activityapi;
 
 import org.activiti.spring.boot.SecurityAutoConfiguration;
 import org.springframework.boot.SpringApplication;

@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.yfny</groupId>
-    <artifactId>activitiy-api</artifactId>
+    <artifactId>activity-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>activitiy-api</name>
+    <name>activity-api</name>
 
     <dependencies>
         <!-- activiti6依赖 -->
