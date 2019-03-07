@@ -19,7 +19,7 @@ public class FreemarketConfigUtils {
 
     public static synchronized Configuration getInstance() {
         if (null == configuration) {
-            configuration = new Configuration(Configuration.VERSION_2_3_23);
+            configuration = new Configuration(Configuration.VERSION_2_3_28);
             try {
                 if (path.contains("jar")) {
                     configuration.setClassForTemplateLoading(FreemarketConfigUtils.class, "/ftls");

@@ -28,9 +28,6 @@ public class TaskQueue {
         if (!StringUtil.isBlank(ConfigUtil.getConfiguration().getPath().getDao())) {
             taskQueue.add(new DaoTask(className));
         }
-        if (!StringUtil.isBlank(ConfigUtil.getConfiguration().getPath().getBasetest())) {
-            taskQueue.add(new APIBaseTestTask(className));
-        }
     }
 
     public void initSingleTasks(String className, String tableName, List<ColumnInfo> tableInfos) {
@@ -40,9 +37,6 @@ public class TaskQueue {
         }
         if (!StringUtil.isBlank(ConfigUtil.getConfiguration().getPath().getMapper())) {
             taskQueue.add(new MapperTask(className, tableName, tableInfos));
-        }
-        if (!StringUtil.isBlank(ConfigUtil.getConfiguration().getPath().getBasetest())) {
-            taskQueue.add(new APIBaseTestTask(className));
         }
     }
 
@@ -65,6 +59,12 @@ public class TaskQueue {
         }
         if (!StringUtil.isBlank(ConfigUtil.getConfiguration().getPath().getMapper())) {
             taskQueue.add(new MapperTask(tableName, className, parentTableName, parentClassName, foreignKey, parentForeignKey, relationalTableName, tableInfos, parentTableInfos));
+        }
+    }
+
+    public void initTestTasks(String className) {
+        if (!StringUtil.isBlank(ConfigUtil.getConfiguration().getPath().getBasetest())) {
+            taskQueue.add(new APIBaseTestTask(className));
         }
     }
 

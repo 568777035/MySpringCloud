@@ -4,6 +4,7 @@ import com.yfny.servicecommon.generator.db.ConnectionUtil;
 import com.yfny.servicecommon.generator.entity.ColumnInfo;
 import com.yfny.servicecommon.generator.task.base.AbstractTask;
 import com.yfny.servicecommon.generator.utils.ConfigUtil;
+import com.yfny.servicecommon.generator.utils.StringUtil;
 import com.yfny.servicecommon.generator.utils.TaskQueue;
 import freemarker.template.TemplateException;
 
@@ -32,11 +33,13 @@ public abstract class AbstractInvoker implements Invoker {
     private ExecutorService executorPool = Executors.newFixedThreadPool(6);
 
     private void initDataSource() throws Exception {
-        if (!this.connectionUtil.initConnection()) {
-            throw new Exception("Failed to connect to database at url:" + ConfigUtil.getConfiguration().getDb().getUrl());
+        if (!StringUtil.isBlank(ConfigUtil.getConfiguration().getDb().getUrl())) {
+            if (!this.connectionUtil.initConnection()) {
+                throw new Exception("Failed to connect to database at url:" + ConfigUtil.getConfiguration().getDb().getUrl());
+            }
+            getTableInfos();
+            connectionUtil.close();
         }
-        getTableInfos();
-        connectionUtil.close();
     }
 
     protected abstract void getTableInfos() throws SQLException;

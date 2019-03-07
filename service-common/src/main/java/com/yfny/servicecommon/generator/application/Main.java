@@ -3,6 +3,7 @@ package com.yfny.servicecommon.generator.application;
 import com.yfny.servicecommon.generator.invoker.Many2ManyInvoker;
 import com.yfny.servicecommon.generator.invoker.One2ManyInvoker;
 import com.yfny.servicecommon.generator.invoker.SingleInvoker;
+import com.yfny.servicecommon.generator.invoker.TestInvoker;
 import com.yfny.servicecommon.generator.invoker.base.Invoker;
 
 /**
@@ -12,7 +13,7 @@ import com.yfny.servicecommon.generator.invoker.base.Invoker;
 public class Main {
 
     public static void main(String[] args) {
-        single();
+        test();
     }
 
     public static void many2many() {
@@ -43,6 +44,12 @@ public class Main {
         Invoker invoker = new SingleInvoker.Builder()
                 .setTableName("user")
                 .setClassName("User")
+                .build();
+        invoker.execute();
+    }
+
+    public static void test() {
+        Invoker invoker = new TestInvoker.Builder()
                 .build();
         invoker.execute();
     }
