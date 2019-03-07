@@ -27,6 +27,7 @@
         <module>service-tips</module>
         <module>service-turbine</module>
         <module>service-zuul</module>
+        <module>activitiy-api</module>
     </modules>
 
     <properties>

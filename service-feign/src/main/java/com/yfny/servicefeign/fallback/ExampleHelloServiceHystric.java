@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ExampleHelloServiceHystric implements ExampleHelloService {
-    
+
     @Override
     public String hello(String name) {
         return "服务接口 [hello] 挂掉了！";
@@ -27,5 +27,10 @@ public class ExampleHelloServiceHystric implements ExampleHelloService {
     @Override
     public UserEntity login(String username, String password) {
         return null;
+    }
+
+    @Override
+    public int submitDemand(String createById, String createByName, String demandName, String demandStatus, String demandDescription, String orgId) {
+        return 0;
     }
 }

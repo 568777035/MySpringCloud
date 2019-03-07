@@ -26,4 +26,8 @@ public interface ExampleHelloService {
     //登陆
     @GetMapping(value = "/user/login")
     public UserEntity login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password);
+
+    //提交需求单
+    @GetMapping("/demand/submitDemand")
+    int submitDemand(@RequestParam String createById,@RequestParam String createByName, @RequestParam String demandName, @RequestParam String demandStatus, @RequestParam String demandDescription, @RequestParam String orgId);
 }
