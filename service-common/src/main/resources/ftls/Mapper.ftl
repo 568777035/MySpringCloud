@@ -18,19 +18,17 @@
 
     <select id="get" resultMap="${EntityName}ResultMap">
         SELECT
-        <include refid="${EntityName}Columns"/>
-        FROM ${TableName}
-        <include refid="${EntityName}Joins"/>
+        <include refid="${EntityName}Columns" />
+        FROM ${TableName} <include refid="${EntityName}Joins" />
         <where>
-            ${TableName}.${PrimaryKey} = ${Id}
+        ${TableName}.${PrimaryKey} = ${Id}
         </where>
     </select>
 
     <select id="findList" resultMap="${EntityName}ResultMap">
         SELECT
-        <include refid="${EntityName}Columns"/>
-        FROM ${TableName}
-        <include refid="${EntityName}Joins"/>
+        <include refid="${EntityName}Columns" />
+        FROM ${TableName} <include refid="${EntityName}Joins" />
         <where>
             <#-- AND ${TableName}.name LIKE concat('%',#{name},'%')-->
         </where>
@@ -38,31 +36,30 @@
 
     <select id="findAllList" resultMap="${EntityName}ResultMap">
         SELECT
-        <include refid="${EntityName}Columns"/>
-        FROM ${TableName}
-        <include refid="${EntityName}Joins"/>
+        <include refid="${EntityName}Columns" />
+        FROM ${TableName} <include refid="${EntityName}Joins" />
         <where>
         </where>
     </select>
 
     <insert id="insert">
         INSERT INTO ${TableName}(
-        ${InsertProperties}
+            ${InsertProperties}
         )
         VALUES (
-        ${InsertValues}
+            ${InsertValues}
         )
     </insert>
 
     <insert id="insertBatch">
         INSERT INTO ${TableName}(
-        ${InsertProperties}
+            ${InsertProperties}
         )
         VALUES
-        <foreach collection="list" item="${EntityName}" separator=",">
-            (
+        <foreach collection ="list" item="${EntityName}" separator =",">
+        (
             ${InsertBatchValues}
-            )
+        )
         </foreach>
     </insert>
 

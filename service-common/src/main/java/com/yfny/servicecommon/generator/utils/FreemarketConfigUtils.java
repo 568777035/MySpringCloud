@@ -15,6 +15,7 @@ public class FreemarketConfigUtils {
     public final static int TYPE_MAPPER = 4;
     public final static int TYPE_INTERFACE = 5;
     public final static int TYPE_API_BASE_TEST = 6;
+    public final static int TYPE_API_UNIT_TEST = 7;
     private static Configuration configuration;
 
     public static synchronized Configuration getInstance() {

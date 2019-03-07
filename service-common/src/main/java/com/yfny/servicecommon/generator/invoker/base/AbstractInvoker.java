@@ -30,7 +30,7 @@ public abstract class AbstractInvoker implements Invoker {
     protected List<ColumnInfo> parentTableInfos;
     protected ConnectionUtil connectionUtil = new ConnectionUtil();
     protected TaskQueue taskQueue = new TaskQueue();
-    private ExecutorService executorPool = Executors.newFixedThreadPool(6);
+    private ExecutorService executorPool = Executors.newFixedThreadPool(8);
 
     private void initDataSource() throws Exception {
         if (!StringUtil.isBlank(ConfigUtil.getConfiguration().getDb().getUrl())) {

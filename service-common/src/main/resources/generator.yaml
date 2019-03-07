@@ -12,3 +12,4 @@ path:
   entity: entity
   mapper: mappers
   basetest: base
+  unittest: unit

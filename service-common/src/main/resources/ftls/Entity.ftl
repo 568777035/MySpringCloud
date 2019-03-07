@@ -8,15 +8,15 @@ import java.sql.Time;
 import java.sql.Timestamp;
 
 /**
-* Author ${Author}
-* Date  ${Date}
-*/
+ * Author ${Author}
+ * Date  ${Date}
+ */
 public class ${ClassName} implements Serializable {
-private static final long serialVersionUID = 1L;
-${Properties}
+    private static final long serialVersionUID = 1L;
+    ${Properties}
 
-public ${ClassName}(){
-}
+    public ${ClassName}(){
+    }
 
-${Methods}
+    ${Methods}
 }

@@ -66,6 +66,9 @@ public class TaskQueue {
         if (!StringUtil.isBlank(ConfigUtil.getConfiguration().getPath().getBasetest())) {
             taskQueue.add(new APIBaseTestTask(className));
         }
+        if (!StringUtil.isBlank(ConfigUtil.getConfiguration().getPath().getUnittest())) {
+            taskQueue.add(new APIUnitTestTask(className));
+        }
     }
 
     public boolean isEmpty() {

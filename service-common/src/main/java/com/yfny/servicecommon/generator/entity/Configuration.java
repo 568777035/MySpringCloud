@@ -91,11 +91,12 @@ public class Configuration implements Serializable {
         private String entity;
         private String mapper;
         private String basetest;
+        private String unittest;
 
         public Path() {
         }
 
-        public Path(String controller, String service, String interf, String dao, String entity, String mapper, String basetest) {
+        public Path(String controller, String service, String interf, String dao, String entity, String mapper, String basetest, String unittest) {
             this.controller = controller;
             this.service = service;
             this.interf = interf;
@@ -103,6 +104,7 @@ public class Configuration implements Serializable {
             this.entity = entity;
             this.mapper = mapper;
             this.basetest = basetest;
+            this.unittest = unittest;
         }
 
         public String getController() {
@@ -159,6 +161,14 @@ public class Configuration implements Serializable {
 
         public void setBasetest(String basetest) {
             this.basetest = basetest;
+        }
+
+        public String getUnittest() {
+            return unittest == null ? "" : unittest;
+        }
+
+        public void setUnittest(String unittest) {
+            this.unittest = unittest;
         }
     }
 

@@ -1,21 +1,11 @@
-package ${BasePackageName}${TestPackageName};
+package ${BasePackageName}${APIUnitTestPackageName};
 
+import ${BasePackageName}${APIBaseTestPackageName}.APIBaseTest;
 
 /**
 * Author ${Author}
 * Date  ${Date}
 */
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class ${ClassName}APITest {
-
-@Autowired
-private WebApplicationContext wac;
-private MockMvc mockMvc;
-
-@Before
-public void setUp() {
-mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
-}
+public class APIUnitTest extends APIBaseTest {
 
 }
