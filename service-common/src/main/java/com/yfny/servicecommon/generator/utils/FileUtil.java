@@ -24,6 +24,9 @@ public class FileUtil {
             System.err.println("ERROR: " + file.getPath().substring(file.getPath().lastIndexOf("\\") + 1, file.getPath().length()) + " 已存在，请手动修改");
             return;
         }
+        if (!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs();
+        }
         Template tpl = getTemplate(type); // 获取模板文件
         // 填充数据
         StringWriter writer = new StringWriter();

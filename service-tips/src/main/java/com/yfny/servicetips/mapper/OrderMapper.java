@@ -1,6 +1,6 @@
 package com.yfny.servicetips.mapper;
 
-import com.yfny.servicecommon.pojo.OrderEntity;
+import com.yfny.servicepojo.entity.OrderEntity;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;

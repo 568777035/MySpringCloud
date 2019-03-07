@@ -1,6 +1,6 @@
 package com.yfny.servicefeign.service;
 
-import com.yfny.servicecommon.pojo.UserEntity;
+import com.yfny.servicepojo.entity.UserEntity;
 import com.yfny.servicefeign.fallback.ExampleHelloServiceHystric;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

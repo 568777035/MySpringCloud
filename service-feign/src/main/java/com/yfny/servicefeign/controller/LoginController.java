@@ -1,8 +1,8 @@
 package com.yfny.servicefeign.controller;
 
 import com.yfny.servicecommon.businesslog.BusinessLog;
-import com.yfny.servicecommon.pojo.OrderEntity;
-import com.yfny.servicecommon.pojo.UserEntity;
+import com.yfny.servicepojo.entity.OrderEntity;
+import com.yfny.servicepojo.entity.UserEntity;
 import com.yfny.servicefeign.service.ExampleHelloService;
 import com.yfny.servicefeign.service.ExampleTipsService;
 import org.springframework.beans.factory.annotation.Autowired;

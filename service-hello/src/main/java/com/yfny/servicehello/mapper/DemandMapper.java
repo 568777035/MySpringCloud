@@ -1,6 +1,6 @@
 package com.yfny.servicehello.mapper;
 
-import com.yfny.servicecommon.pojo.DemandEntity;
+import com.yfny.servicepojo.entity.DemandEntity;
 import org.apache.ibatis.annotations.Insert;
 import tk.mybatis.mapper.common.BaseMapper;
 

@@ -40,7 +40,7 @@ spring:
   transaction:
     rollback-on-commit-failure: true
 #mybatis:（因为使用的是注解方式，所以这里不配置也可以的）
-#  type-aliases-package: com.yfny.servicecommon.pojo
+#  type-aliases-package: com.yfny.servicepojo.entity
 #  configuration:
 #    map-underscore-to-camel-case: true
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

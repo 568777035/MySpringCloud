@@ -19,7 +19,7 @@ public class DemandController {
     private DemandServiceImpl demandService;
 
     @GetMapping("/submitDemand")
-    public int submitDemand(@RequestParam String createById,@RequestParam String createByName,@RequestParam String demandName,@RequestParam String demandDescription,@RequestParam String orgId){
-        return demandService.submitDemand(createById,createByName,demandName,demandDescription,orgId);
+    public int submitDemand(@RequestParam String createById, @RequestParam String createByName, @RequestParam String demandName, @RequestParam String demandStatus, @RequestParam String demandDescription, @RequestParam String orgId) {
+        return demandService.submitDemand(createById, createByName, demandName, demandStatus, demandDescription, orgId);
     }
 }

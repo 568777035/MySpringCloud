@@ -1,4 +1,4 @@
-package com.yfny.servicecommon.enums;
+package com.yfny.servicepojo.enums;
 
 /**
  * 示例用户性别枚举

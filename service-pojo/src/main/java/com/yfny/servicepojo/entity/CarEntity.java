@@ -1,4 +1,4 @@
-package com.yfny.servicecommon.pojo;
+package com.yfny.servicepojo.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -6,26 +6,26 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
- * 实例用户详细信息
+ * 实例用户拥有车辆详细信息
  * Created by zileShi on 2019/2/26.
  **/
-@Table(name = "details")
-public class DetailsEntity implements Serializable {
+@Table(name = "car")
+public class CarEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     private Long id;
 
-    @Column(name = "birthday")
-    private String birthday;
+    @Column(name = "color")
+    private String color;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "userId")
     private String userId;
 
-    public DetailsEntity() {
+    public CarEntity() {
     }
 
     public static long getSerialVersionUID() {
@@ -40,20 +40,20 @@ public class DetailsEntity implements Serializable {
         this.id = id;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public String getColor() {
+        return color;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public String getAddress() {
-        return address;
+    public String getName() {
+        return name;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUserId() {
@@ -66,10 +66,10 @@ public class DetailsEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "DetailsEntity{" +
+        return "CarEntity{" +
                 "id=" + id +
-                ", birthday='" + birthday + '\'' +
-                ", address='" + address + '\'' +
+                ", color='" + color + '\'' +
+                ", name='" + name + '\'' +
                 ", userId='" + userId + '\'' +
                 '}';
     }

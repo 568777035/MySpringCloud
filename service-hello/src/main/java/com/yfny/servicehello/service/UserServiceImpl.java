@@ -2,7 +2,7 @@ package com.yfny.servicehello.service;
 
 
 import com.github.pagehelper.PageHelper;
-import com.yfny.servicecommon.pojo.UserEntity;
+import com.yfny.servicepojo.entity.UserEntity;
 import com.yfny.servicehello.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

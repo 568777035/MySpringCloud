@@ -1,6 +1,6 @@
-package com.yfny.servicecommon.pojo;
+package com.yfny.servicepojo.entity;
 
-import com.yfny.servicecommon.enums.UserSexEnum;
+import com.yfny.servicepojo.enums.UserSexEnum;
 
 import javax.persistence.Column;
 import javax.persistence.Id;

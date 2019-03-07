@@ -1,4 +1,4 @@
-package com.yfny.servicecommon.pojo;
+package com.yfny.servicepojo.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -6,26 +6,26 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
- * 实例用户拥有车辆详细信息
+ * 实例用户详细信息
  * Created by zileShi on 2019/2/26.
  **/
-@Table(name = "car")
-public class CarEntity implements Serializable {
+@Table(name = "details")
+public class DetailsEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     private Long id;
 
-    @Column(name = "color")
-    private String color;
+    @Column(name = "birthday")
+    private String birthday;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "address")
+    private String address;
 
     @Column(name = "userId")
     private String userId;
 
-    public CarEntity() {
+    public DetailsEntity() {
     }
 
     public static long getSerialVersionUID() {
@@ -40,20 +40,20 @@ public class CarEntity implements Serializable {
         this.id = id;
     }
 
-    public String getColor() {
-        return color;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
-    public String getName() {
-        return name;
+    public String getAddress() {
+        return address;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getUserId() {
@@ -66,10 +66,10 @@ public class CarEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "CarEntity{" +
+        return "DetailsEntity{" +
                 "id=" + id +
-                ", color='" + color + '\'' +
-                ", name='" + name + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", address='" + address + '\'' +
                 ", userId='" + userId + '\'' +
                 '}';
     }

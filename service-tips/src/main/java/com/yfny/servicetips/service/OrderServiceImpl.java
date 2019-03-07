@@ -1,6 +1,6 @@
 package com.yfny.servicetips.service;
 
-import com.yfny.servicecommon.pojo.OrderEntity;
+import com.yfny.servicepojo.entity.OrderEntity;
 import com.yfny.servicetips.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

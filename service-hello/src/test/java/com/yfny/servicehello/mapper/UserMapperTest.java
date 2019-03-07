@@ -1,7 +1,7 @@
 //package com.yfny.servicehello.mapper;
 //
-//import com.yfny.servicecommon.pojo.UserEntity;
-//import com.yfny.servicecommon.enums.UserSexEnum;
+//import com.yfny.servicepojo.entity.UserEntity;
+//import com.yfny.servicepojo.enums.UserSexEnum;
 //import org.junit.Assert;
 //import org.junit.Test;
 //import org.junit.runner.RunWith;
