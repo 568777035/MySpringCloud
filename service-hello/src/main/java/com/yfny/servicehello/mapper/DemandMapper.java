@@ -1,8 +1,12 @@
 package com.yfny.servicehello.mapper;
 
 import com.yfny.servicepojo.entity.DemandEntity;
-import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
 import tk.mybatis.mapper.common.BaseMapper;
+
+import java.util.List;
 
 /**
  * 需求单Mapper
@@ -11,6 +15,18 @@ import tk.mybatis.mapper.common.BaseMapper;
  */
 public interface DemandMapper extends BaseMapper<DemandEntity> {
 
-    @Insert("INSERT demand SET CREATEBY_ID = #{createById},CREATEBY_NAME = #{createByName},DEMAND_NAME = #{demandName},DEMAND_STATUS = #{demandStatus},DEMAND_DESCRIPTION = #{demandDescription},ORG_ID = #{orgId}")
-    int submitDemand(String createById,String createByName,String demandName,String demandStatus,String demandDescription,String orgId);
+
+    @Select("SELECT * FROM demand WHERE CREATEBY_ID = #{createId}")
+    @Results({
+            @Result(id = true, column = "ID", property = "id"),
+            @Result(column = "CREATEBY_NAME",property = "demandName"),
+            @Result(column = "DEMAND_NAME",property = "createByName"),
+            @Result(column = "DEMAND_DESCRIPTION",property = "demandDescription"),
+            @Result(column = "DEMAND_STATUS",property = "demandStatus"),
+            @Result(column = "AUDITOR_ID",property = "aduitorId"),
+            @Result(column = "ORG_ID",property = "orgId"),
+            @Result(column = "CREATEBY_ID",property = "createById"),
+            @Result(column = "TASK_ID",property = "taskId")
+    })
+    List<DemandEntity> selectDemandByUserId(String createId);
 }

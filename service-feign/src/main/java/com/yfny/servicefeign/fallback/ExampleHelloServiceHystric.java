@@ -1,8 +1,11 @@
 package com.yfny.servicefeign.fallback;
 
+import com.yfny.servicepojo.entity.DemandEntity;
 import com.yfny.servicepojo.entity.UserEntity;
 import com.yfny.servicefeign.service.ExampleHelloService;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * 示例断路处理
@@ -30,7 +33,18 @@ public class ExampleHelloServiceHystric implements ExampleHelloService {
     }
 
     @Override
-    public int submitDemand(String createById, String createByName, String demandName, String demandStatus, String demandDescription, String orgId) {
+    public int submitDemand(DemandEntity demandEntity) {
         return 0;
     }
+
+    @Override
+    public int auditDemand(int demandId, String taskId, String auditOpinion, String shrId, String orgId, boolean pass) {
+        return 0;
+    }
+
+    @Override
+    public List<DemandEntity> selectDemandByUserId(String userId, int pageNum, int pageSize) {
+        return null;
+    }
+
 }

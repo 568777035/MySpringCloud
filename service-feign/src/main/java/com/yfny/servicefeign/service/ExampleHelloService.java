@@ -1,12 +1,12 @@
 package com.yfny.servicefeign.service;
 
+import com.yfny.servicepojo.entity.DemandEntity;
 import com.yfny.servicepojo.entity.UserEntity;
 import com.yfny.servicefeign.fallback.ExampleHelloServiceHystric;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 示例Service
@@ -28,6 +28,12 @@ public interface ExampleHelloService {
     public UserEntity login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password);
 
     //提交需求单
-    @GetMapping("/demand/submitDemand")
-    int submitDemand(@RequestParam String createById,@RequestParam String createByName, @RequestParam String demandName, @RequestParam String demandStatus, @RequestParam String demandDescription, @RequestParam String orgId);
+    @PostMapping(value = "/demand/submitDemand")
+    int submitDemand(@RequestBody DemandEntity demandEntity);
+
+    @PostMapping(value = "/demand/auditDemand")
+    int auditDemand(@RequestParam int demandId,@RequestParam String taskId,@RequestParam String auditOpinion,@RequestParam String shrId,@RequestParam String orgId,@RequestParam boolean pass);
+
+    @GetMapping(value = "/demand/selectDemandByUserId/{userId}/{pageNum}/{pageSize}")
+    List<DemandEntity> selectDemandByUserId(@PathVariable String userId,@PathVariable int pageNum,@PathVariable int pageSize);
 }

@@ -15,6 +15,7 @@ import java.util.Date;
 public class DemandEntity implements Serializable {
 
     @Id
+    @Column(name = "ID")
     private int id;//主键ID
 
     @Column(name = "CREATEBY_NAME")
@@ -43,4 +44,112 @@ public class DemandEntity implements Serializable {
 
     @Column(name = "CREATEBY_ID")
     private String createById;//创建人ID
+
+    @Column(name = "TASK_ID")
+    private String taskId;//流程实例ID
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCreateByName() {
+        return createByName;
+    }
+
+    public void setCreateByName(String createByName) {
+        this.createByName = createByName;
+    }
+
+    public String getDemandName() {
+        return demandName;
+    }
+
+    public void setDemandName(String demandName) {
+        this.demandName = demandName;
+    }
+
+    public String getDemandDescription() {
+        return demandDescription;
+    }
+
+    public void setDemandDescription(String demandDescription) {
+        this.demandDescription = demandDescription;
+    }
+
+    public String getDemandStatus() {
+        return demandStatus;
+    }
+
+    public void setDemandStatus(String demandStatus) {
+        this.demandStatus = demandStatus;
+    }
+
+    public String getAduitorId() {
+        return aduitorId;
+    }
+
+    public void setAduitorId(String aduitorId) {
+        this.aduitorId = aduitorId;
+    }
+
+    public String getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(String orgId) {
+        this.orgId = orgId;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getCreateById() {
+        return createById;
+    }
+
+    public void setCreateById(String createById) {
+        this.createById = createById;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
+
+    public DemandEntity() {
+    }
+
+    public DemandEntity(int id, String createByName, String demandName, String demandDescription, String demandStatus, String aduitorId, String orgId, Date startTime, Date endTime, String createById, String taskId) {
+        this.id = id;
+        this.createByName = createByName;
+        this.demandName = demandName;
+        this.demandDescription = demandDescription;
+        this.demandStatus = demandStatus;
+        this.aduitorId = aduitorId;
+        this.orgId = orgId;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.createById = createById;
+        this.taskId = taskId;
+    }
 }

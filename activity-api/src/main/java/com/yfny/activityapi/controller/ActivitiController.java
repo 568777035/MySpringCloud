@@ -43,11 +43,12 @@ public class ActivitiController {
      * @param demandReviews 需求综述
      * @return
      */
-    @GetMapping(value = "/submitDemand/{userId}/{createName}/{zzid}/{demandReviews}")
-    public int  submitDemand(@PathVariable String userId,@PathVariable String createName, @PathVariable String zzid, @PathVariable String demandReviews){
+    @PostMapping(value = "/submitDemand/{userId}/{createName}/{zzid}/{demandReviews}")
+    public String  submitDemand(@PathVariable String userId,@PathVariable String createName, @PathVariable String zzid, @PathVariable String demandReviews){
         try {
+            String processInstanceId =  ActivitiUtils.getProcessInstance(userId).getId();
             //查询第一个任务
-            Task task = taskService.createTaskQuery().processInstanceId(ActivitiUtils.getProcessInstance(userId).getId()).singleResult();
+            Task task = taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult();
             //设置流程变量
             Map<String,Object> variables = new HashMap<>();
             variables.put("createName",createName);
@@ -56,9 +57,9 @@ public class ActivitiController {
             taskService.setVariables(task.getId(),variables);
             //完成任务
             taskService.complete(task.getId());
-            return 1;
+            return taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult().getId();
         } catch (Exception e) {
-            return 0;
+            return null;
         }
     }
 
@@ -70,9 +71,10 @@ public class ActivitiController {
      * @param pass  是否通过
      * @return 1成功，0失败
      */
-    @GetMapping(value = "/auditDemand/{taskId}/{shrId}/{auditOpinion}/{pass}")
-    public int auditDemand(@PathVariable String taskId,@PathVariable String auditOpinion,@PathVariable String shrId,@PathVariable boolean pass){
+    @PostMapping(value = "/auditDemand/{taskId}/{shrId}/{auditOpinion}/{pass}")
+    public String auditDemand(@PathVariable String taskId,@PathVariable String shrId,@PathVariable String auditOpinion,@PathVariable boolean pass){
         try {
+            Task task = this.taskService.createTaskQuery().taskId(taskId).singleResult();
             //根据流程任务ID获取流程任务
             Map<String,Object> variables = new HashMap<>();
             variables.put("auditOpinion",auditOpinion);
@@ -81,9 +83,9 @@ public class ActivitiController {
             taskService.setVariables(taskId,variables);
             //完成任务
             taskService.complete(taskId);
-            return 1;
+            return taskService.createTaskQuery().processInstanceId(task.getProcessInstanceId()).singleResult().getId();
         } catch (Exception e) {
-            return 0;
+            return null;
         }
     }
 
@@ -162,6 +164,22 @@ public class ActivitiController {
             return "获取成功，该组织下任务数:"+historicProcessInstanceList.size();
         }else {
             return "获取成功，该组织下任务书: 0 ";
+        }
+    }
+
+    @GetMapping(value = "/getTaskListByUserId/{userId}/{pageNum}/{pageSize}")
+    public List<Task> getTaskListByUserId(@PathVariable String userId,@PathVariable int pageNum,@PathVariable int pageSize){
+        List<Task> taskList = new ArrayList<>();
+        pageNum = (pageNum-1)*pageSize;
+        List<HistoricProcessInstance> historicProcessInstanceList = historyService.createHistoricProcessInstanceQuery().includeProcessVariables().startedBy(userId).listPage(pageNum,pageSize);
+        if (historicProcessInstanceList!=null && historicProcessInstanceList.size()>0){
+            for (HistoricProcessInstance historicProcessInstance : historicProcessInstanceList) {
+                Task task = taskService.createTaskQuery().processInstanceId(historicProcessInstance.getId()).includeProcessVariables().singleResult();
+                taskList.add(task);
+            }
+           return taskList;
+        }else {
+            return taskList;
         }
     }
 }

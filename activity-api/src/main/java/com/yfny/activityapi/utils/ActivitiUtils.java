@@ -19,7 +19,7 @@ public class ActivitiUtils {
      */
     public static ProcessInstance getProcessInstance(String userId){
         if (processInstance==null){
-
+            //获取流程引擎对象
             ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
             //设置流程发起人
             processEngine.getIdentityService().setAuthenticatedUserId(userId);
