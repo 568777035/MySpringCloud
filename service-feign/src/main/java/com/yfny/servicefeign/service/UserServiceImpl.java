@@ -18,6 +18,7 @@ public class UserServiceImpl {
     private ExampleTipsService exampleTipsService;
 
 
+    
     /**
      * 分布式事务参考地址：
      *  https://www.txlcn.org/zh-cn/docs/demo/springcloud.html
