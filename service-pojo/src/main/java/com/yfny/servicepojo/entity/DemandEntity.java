@@ -16,7 +16,7 @@ public class DemandEntity implements Serializable {
 
     @Id
     @Column(name = "ID")
-    private int id;//主键ID
+    private Long id;//主键ID
 
     @Column(name = "CREATEBY_NAME")
     private String createByName;//创建人名称
@@ -48,11 +48,11 @@ public class DemandEntity implements Serializable {
     @Column(name = "TASK_ID")
     private String taskId;//流程实例ID
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -139,7 +139,7 @@ public class DemandEntity implements Serializable {
     public DemandEntity() {
     }
 
-    public DemandEntity(int id, String createByName, String demandName, String demandDescription, String demandStatus, String aduitorId, String orgId, Date startTime, Date endTime, String createById, String taskId) {
+    public DemandEntity(Long id, String createByName, String demandName, String demandDescription, String demandStatus, String aduitorId, String orgId, Date startTime, Date endTime, String createById, String taskId) {
         this.id = id;
         this.createByName = createByName;
         this.demandName = demandName;

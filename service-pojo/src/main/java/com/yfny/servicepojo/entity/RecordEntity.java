@@ -14,10 +14,10 @@ import java.io.Serializable;
 public class RecordEntity implements Serializable {
 
     @Id
-    private int id;//主键ID
+    private Long id;//主键ID
 
     @Column(name = "DEMAND_ID")
-    private int demandId;//需求单ID
+    private Long demandId;//需求单ID
 
     @Column(name = "AUDITOR_ID")
     private String auditorId;//审核人ID
@@ -25,19 +25,19 @@ public class RecordEntity implements Serializable {
     @Column(name = "AUDITOR_OPINION")
     private String auditorOpinion;//审核意见
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getDemandId() {
+    public Long getDemandId() {
         return demandId;
     }
 
-    public void setDemandId(int demandId) {
+    public void setDemandId(Long demandId) {
         this.demandId = demandId;
     }
 
@@ -60,7 +60,7 @@ public class RecordEntity implements Serializable {
     public RecordEntity() {
     }
 
-    public RecordEntity(int id, int demandId, String auditorId, String auditorOpinion) {
+    public RecordEntity(Long id, Long demandId, String auditorId, String auditorOpinion) {
         this.id = id;
         this.demandId = demandId;
         this.auditorId = auditorId;
