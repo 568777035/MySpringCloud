@@ -6,7 +6,9 @@ import com.yfny.servicepojo.entity.DemandEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 需求单Controller
@@ -25,7 +27,11 @@ public class DemandController {
 
     @PostMapping(value = "/submitDemand")
     public String submitDemand(@RequestParam String createById,@RequestParam String createByName, @RequestParam String demandName, @RequestParam String demandDescription, @RequestParam String orgId){
-        String taskId = exampleActivitiApiService.submitDemand(createById,createByName,orgId,demandDescription);
+        Map<String,Object> map = new HashMap<>();
+        map.put("createName",createByName);
+        map.put("orgId",orgId);
+        map.put("demandDescription",demandDescription);
+        String taskId = exampleActivitiApiService.createTask(createById,"xqd",map);
         if (taskId!=null){
             DemandEntity demandEntity = new DemandEntity();
             demandEntity.setCreateById(createById);
@@ -56,8 +62,12 @@ public class DemandController {
      * @return
      */
     @PostMapping(value = "/auditDemand")
-    public String auditDemand(@RequestParam int demandId,@RequestParam String taskId,@RequestParam String auditOpinion,@RequestParam String shrId,@RequestParam String orgId,@RequestParam boolean pass){
-        taskId = exampleActivitiApiService.auditDemand(taskId,shrId,auditOpinion,pass);
+    public String auditDemand(@RequestParam Long demandId,@RequestParam String taskId,@RequestParam String auditOpinion,@RequestParam String shrId,@RequestParam String orgId,@RequestParam boolean pass){
+        Map<String,Object> map = new HashMap<>();
+        map.put("shrId",shrId);
+        map.put("auditOpinion",auditOpinion);
+        map.put("pass",pass);
+        taskId = exampleActivitiApiService.fulfilTask(taskId,map);
         if (taskId!=null){
             int i = exampleHelloService.auditDemand(demandId,taskId,auditOpinion,shrId,orgId,pass);
             if (i>0){

@@ -39,7 +39,7 @@ public class DemandController {
 
 
     @PostMapping("/auditDemand")
-    public int auditDemand(@RequestParam int demandId,@RequestParam String taskId,@RequestParam String auditOpinion,@RequestParam String shrId,@RequestParam String orgId,@RequestParam boolean pass){
+    public int auditDemand(@RequestParam Long demandId,@RequestParam String taskId,@RequestParam String auditOpinion,@RequestParam String shrId,@RequestParam String orgId,@RequestParam boolean pass){
         //创建需求单实例对象
         DemandEntity demandEntity = new DemandEntity();
         //创建需求单记录实例对象

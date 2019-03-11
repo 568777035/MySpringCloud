@@ -38,7 +38,7 @@ public class ExampleHelloServiceHystric implements ExampleHelloService {
     }
 
     @Override
-    public int auditDemand(int demandId, String taskId, String auditOpinion, String shrId, String orgId, boolean pass) {
+    public int auditDemand(Long demandId, String taskId, String auditOpinion, String shrId, String orgId, boolean pass) {
         return 0;
     }
 

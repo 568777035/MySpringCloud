@@ -32,7 +32,7 @@ public interface ExampleHelloService {
     int submitDemand(@RequestBody DemandEntity demandEntity);
 
     @PostMapping(value = "/demand/auditDemand")
-    int auditDemand(@RequestParam int demandId,@RequestParam String taskId,@RequestParam String auditOpinion,@RequestParam String shrId,@RequestParam String orgId,@RequestParam boolean pass);
+    int auditDemand(@RequestParam Long demandId,@RequestParam String taskId,@RequestParam String auditOpinion,@RequestParam String shrId,@RequestParam String orgId,@RequestParam boolean pass);
 
     @GetMapping(value = "/demand/selectDemandByUserId/{userId}/{pageNum}/{pageSize}")
     List<DemandEntity> selectDemandByUserId(@PathVariable String userId,@PathVariable int pageNum,@PathVariable int pageSize);

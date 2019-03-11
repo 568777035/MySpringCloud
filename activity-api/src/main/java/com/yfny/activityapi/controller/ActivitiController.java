@@ -1,5 +1,6 @@
 package com.yfny.activityapi.controller;
 
+import com.yfny.activityapi.service.ActivitiService;
 import com.yfny.activityapi.utils.ActivitiUtils;
 import org.activiti.engine.*;
 import org.activiti.engine.history.HistoricProcessInstance;
@@ -8,6 +9,11 @@ import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.image.BufferedImage;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,6 +42,9 @@ public class ActivitiController {
     @Autowired
     private HistoryService historyService;
 
+    @Autowired
+    private ActivitiService activitiService;
+
     /**
      * 提交需求单
      * @param createName    创建人
@@ -43,25 +52,25 @@ public class ActivitiController {
      * @param demandReviews 需求综述
      * @return
      */
-    @PostMapping(value = "/submitDemand/{userId}/{createName}/{zzid}/{demandReviews}")
-    public String  submitDemand(@PathVariable String userId,@PathVariable String createName, @PathVariable String zzid, @PathVariable String demandReviews){
-        try {
-            String processInstanceId =  ActivitiUtils.getProcessInstance(userId).getId();
-            //查询第一个任务
-            Task task = taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult();
-            //设置流程变量
-            Map<String,Object> variables = new HashMap<>();
-            variables.put("createName",createName);
-            variables.put("zzid",zzid);
-            variables.put("demandReviews",demandReviews);
-            taskService.setVariables(task.getId(),variables);
-            //完成任务
-            taskService.complete(task.getId());
-            return taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult().getId();
-        } catch (Exception e) {
-            return null;
-        }
-    }
+//    @PostMapping(value = "/submitDemand/{userId}/{createName}/{zzid}/{demandReviews}")
+//    public String  submitDemand(@PathVariable String userId,@PathVariable String createName, @PathVariable String zzid, @PathVariable String demandReviews){
+//        try {
+//            String processInstanceId =  ActivitiUtils.getProcessInstance(userId).getId();
+//            //查询第一个任务
+//            Task task = taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult();
+//            //设置流程变量
+//            Map<String,Object> variables = new HashMap<>();
+//            variables.put("createName",createName);
+//            variables.put("zzid",zzid);
+//            variables.put("demandReviews",demandReviews);
+//            taskService.setVariables(task.getId(),variables);
+//            //完成任务
+//            taskService.complete(task.getId());
+//            return taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult().getId();
+//        } catch (Exception e) {
+//            return null;
+//        }
+//    }
 
     /**
      * 审核需求单
@@ -182,4 +191,101 @@ public class ActivitiController {
             return taskList;
         }
     }
+
+
+    /**
+     * 创建流程并完成第一个任务
+     * @param userId    流程发起人ID
+     * @param key       流程ID
+     * @param variables 流程变量
+     * @return  下一个任务的ID
+     */
+    @PostMapping(value = "/createTask")
+    public String createTask(@RequestParam String userId,@RequestParam String key,@RequestBody Map<String,Object> variables){
+        try {
+            //获取当前流程实例ID
+            String processInstanceId =  ActivitiUtils.getProcessInstance(userId,key).getId();
+            //查询第一个任务
+            Task task = taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult();
+            //设置流程任务变量
+            taskService.setVariables(task.getId(),variables);
+            //完成任务
+            taskService.complete(task.getId());
+            //返回下一个任务的ID
+            return taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult().getId();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    /**
+     * 完成流程任务
+     * @param taskId    任务ID
+     * @param variables 流程变量
+     * @return  返回下一个任务的ID
+     */
+    @PostMapping(value = "/fulfilTask")
+    public String fulfilTask(@RequestParam String taskId,@RequestBody Map<String,Object> variables){
+        try {
+            //根据任务ID获取当前任务实例
+            Task task = this.taskService.createTaskQuery().taskId(taskId).singleResult();
+            //设置流程任务变量
+            taskService.setVariables(taskId,variables);
+            //完成任务
+            taskService.complete(taskId);
+            //返回下一个任务的ID
+            return taskService.createTaskQuery().processInstanceId(task.getProcessInstanceId()).singleResult().getId();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    /**
+     * 创建流程并获取第一个任务
+     * @param userId    创建人ID
+     * @param key       流程ID
+     * @param variables 流程变量
+     * @return  返回当前任务的ID
+     */
+    @PostMapping(value = "/createFlow")
+    public String createFlow(@RequestParam String userId,@RequestParam String key,@RequestBody Map<String,Object> variables){
+        try {
+            //获取当前流程实例ID
+            String processInstanceId =  ActivitiUtils.getProcessInstance(userId,key).getId();
+            //查询第一个任务
+            Task task = taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult();
+            //设置流程任务变量
+            taskService.setVariables(task.getId(),variables);
+            return task.getId();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    /**
+     * 根据当前任务ID获取流程图并高亮显示当前任务
+     * @param taskId    当前任务ID
+     * @param response
+     */
+    @GetMapping(value = "/image")
+    public void image(@RequestParam String taskId,
+                      HttpServletResponse response) {
+        try {
+            //获取当前流程任务实例对象
+            Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+            //根据当前流程实例ID获取图片输入流
+            InputStream is = activitiService.getDiagram(task.getProcessInstanceId());
+            if (is == null)
+                return;
+            response.setContentType("image/png");
+            BufferedImage image = ImageIO.read(is);
+            OutputStream out = response.getOutputStream();
+            ImageIO.write(image, "png", out);
+            is.close();
+            out.close();
+        } catch (Exception ex) {
+            return;
+        }
+    }
+
 }
