@@ -1,6 +1,7 @@
 package com.yfny.servicehello.service;
 
 
+import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import com.github.pagehelper.PageHelper;
 import com.yfny.servicepojo.entity.UserEntity;
 import com.yfny.servicehello.mapper.UserMapper;
@@ -25,6 +26,7 @@ public class UserServiceImpl{
     }
 
 
+    @LcnTransaction //分布式事务注解
     @Transactional
     public boolean addUser(UserEntity record) {
         boolean result = false;

@@ -19,11 +19,13 @@
 
     <properties>
         <mysql-connector-java.version>5.1.47</mysql-connector-java.version>
-        <druid.version>1.1.14</druid.version>
+        <!--<druid.version>1.1.14</druid.version>-->
+        <druid.version>1.1.12</druid.version>
         <mybatis-spring-boot.version>2.0.0</mybatis-spring-boot.version>
         <mapper-spring-boot.version>2.1.3</mapper-spring-boot.version>
         <pagehelper-spring-boot.version>1.2.3</pagehelper-spring-boot.version>
         <mybatis-generator-maven-plugin.version>1.3.7</mybatis-generator-maven-plugin.version>
+        <txlcn.tx.version>5.0.2.RELEASE</txlcn.tx.version>
     </properties>
 
     <dependencies>
@@ -76,9 +78,14 @@
             <version>${mysql-connector-java.version}</version>
         </dependency>
         <!--集成druid，使用连接-->
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba</groupId>-->
+            <!--<artifactId>druid-spring-boot-starter</artifactId>-->
+            <!--<version>${druid.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
+            <artifactId>druid</artifactId>
             <version>${druid.version}</version>
         </dependency>
         <!-- mybatis依赖 -->
@@ -98,6 +105,17 @@
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>${pagehelper-spring-boot.version}</version>
+        </dependency>
+        <!--TC引入pom依赖-->
+        <dependency>
+            <groupId>com.codingapi.txlcn</groupId>
+            <artifactId>txlcn-tc</artifactId>
+            <version>${txlcn.tx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codingapi.txlcn</groupId>
+            <artifactId>txlcn-txmsg-netty</artifactId>
+            <version>${txlcn.tx.version}</version>
         </dependency>
 
     </dependencies>

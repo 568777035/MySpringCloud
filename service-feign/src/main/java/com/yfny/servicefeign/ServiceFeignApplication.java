@@ -1,6 +1,7 @@
 package com.yfny.servicefeign;
 
 import brave.sampler.Sampler;
+import com.codingapi.txlcn.tc.config.EnableDistributedTransaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -15,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 @EnableFeignClients
 @ComponentScan(basePackages = {"com.yfny.**.**"})
+@EnableDistributedTransaction
 public class ServiceFeignApplication {
 
     public static void main(String[] args) {

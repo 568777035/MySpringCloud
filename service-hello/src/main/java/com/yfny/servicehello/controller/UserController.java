@@ -77,17 +77,33 @@ public class UserController {
         return userService.findAllUser(pageNum, pageSize);
     }
 
+//    /**
+//     * 添加用户
+//     *
+//     * @param entity
+//     * @return
+//     */
+//    @PostMapping(value = "/addUser")
+//    @ResponseBody
+//    public boolean addUser(UserEntity entity) {
+//        return userService.addUser(entity);
+//    }
+
+
     /**
      * 添加用户
-     *
-     * @param entity
      * @return
      */
     @PostMapping(value = "/addUser")
     @ResponseBody
-    public boolean addUser(UserEntity entity) {
-        return userService.addUser(entity);
+    public boolean addUser() {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId(123412L);
+        userEntity.setPassWord("ff");
+        userEntity.setUserName("gg");
+        return userService.addUser(userEntity);
     }
+
 
 
     /**

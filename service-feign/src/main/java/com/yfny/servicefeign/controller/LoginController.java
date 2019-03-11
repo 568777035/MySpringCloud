@@ -1,16 +1,14 @@
 package com.yfny.servicefeign.controller;
 
 import com.yfny.servicecommon.businesslog.BusinessLog;
+import com.yfny.servicefeign.service.UserServiceImpl;
 import com.yfny.servicepojo.entity.OrderEntity;
 import com.yfny.servicepojo.entity.UserEntity;
 import com.yfny.servicefeign.service.ExampleHelloService;
 import com.yfny.servicefeign.service.ExampleTipsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by zileShi on 2019/2/26.
@@ -26,6 +24,9 @@ public class LoginController {
 
     @Autowired
     private ExampleTipsService exampleTipsService;
+
+    @Autowired
+    private UserServiceImpl userService;
 
 
     /**
@@ -47,5 +48,20 @@ public class LoginController {
             return "账号或密码错误！";
         }
     }
+
+
+    @PostMapping(value = "/test")
+    @ResponseBody
+    public String test(){
+        boolean result1 = userService.addUserAndOrder();
+        System.out.println("result1 = " + result1);
+        if (result1){
+            return "true";
+        }else {
+            return "false";
+        }
+    }
+
+
 
 }

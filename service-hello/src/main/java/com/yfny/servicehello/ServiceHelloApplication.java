@@ -1,6 +1,7 @@
 package com.yfny.servicehello;
 
 import brave.sampler.Sampler;
+import com.codingapi.txlcn.tc.config.EnableDistributedTransaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -21,6 +22,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableCircuitBreaker
 @MapperScan({"com.yfny.servicehello.mapper", "tk.mybatis.mapper.common.base"})
 @ComponentScan(basePackages = {"com.yfny.**.**"})
+@EnableDistributedTransaction
 public class ServiceHelloApplication {
 
     /**

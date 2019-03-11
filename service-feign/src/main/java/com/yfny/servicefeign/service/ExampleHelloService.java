@@ -36,4 +36,7 @@ public interface ExampleHelloService {
 
     @GetMapping(value = "/demand/selectDemandByUserId/{userId}/{pageNum}/{pageSize}")
     List<DemandEntity> selectDemandByUserId(@PathVariable String userId,@PathVariable int pageNum,@PathVariable int pageSize);
+
+    @RequestMapping(value = "/user/addUser",method = RequestMethod.POST)
+    public boolean addUser();
 }

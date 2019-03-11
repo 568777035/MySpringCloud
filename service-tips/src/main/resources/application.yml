@@ -8,7 +8,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/test_order?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
     username: root
-    password:
+    password: root
     driver-class-name: com.mysql.jdbc.Driver
     filters: stat
     minIdle: 1
@@ -25,10 +25,20 @@ spring:
     initial-size: 1
     #使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
-    redis:
-      host: localhost
-      port: 6379
-      password:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 1
+    timeout: 60s
+    jedis:
+      pool:
+        max-idle: 50
+        min-idle: 5
+        max-wait: -1s
+        max-active: -1
+  transaction:
+    rollback-on-commit-failure: true
   #mybatis:（因为使用的是注解方式，所以这里不配置也可以的）
   #  type-aliases-package: com.yfny.servicepojo.entity
   #  configuration:
@@ -65,3 +75,14 @@ management:
       cors:
         allowed-origins: "*"
         allowed-methods: "*"
+
+#TC配置信息
+tx-lcn:
+  client:
+    manager-address: 127.0.0.1:8070
+#TC日志
+logging:
+  level:
+    com:
+      dodingapi:
+        txlcn: debug

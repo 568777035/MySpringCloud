@@ -40,4 +40,7 @@ public interface ExampleTipsService {
     @GetMapping("/order/getOrderByPermission")
     public OrderEntity getOrderByPermission(@RequestParam(value = "permission") String permission);
 
+    @RequestMapping(value = "/order/addOrder",method = RequestMethod.POST)
+    public boolean addOrder();
+
 }

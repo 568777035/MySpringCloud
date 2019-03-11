@@ -52,4 +52,9 @@ public class ExampleTipsServiceHystric implements ExampleTipsService {
     public OrderEntity getOrderByPermission(String permission) {
         return null;
     }
+
+    @Override
+    public boolean addOrder() {
+        return false;
+    }
 }

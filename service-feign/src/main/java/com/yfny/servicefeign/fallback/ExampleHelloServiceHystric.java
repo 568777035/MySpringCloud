@@ -47,4 +47,9 @@ public class ExampleHelloServiceHystric implements ExampleHelloService {
         return null;
     }
 
+    @Override
+    public boolean addUser() {
+        return false;
+    }
+
 }

@@ -9,6 +9,10 @@ spring:
     name: service-feign
   zipkin:
     base-url: http://localhost:9411
+
+  main:
+    allow-bean-definition-overriding: true
+
 feign:
   hystrix:
     enabled: true
@@ -23,3 +27,14 @@ ribbon:
   MaxAutoRetries: 0
   #切换服务的次数(比如本次请求分配给9082处理，发现404，则切换分配给9081处理，如果还是404，则返回404给客户端）
   MaxAutoRetriesNextServer: 0
+
+#TC配置信息
+tx-lcn:
+  client:
+    manager-address: 127.0.0.1:8070
+#TC日志
+logging:
+  level:
+    com:
+      dodingapi:
+        txlcn: debug

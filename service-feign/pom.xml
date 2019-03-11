@@ -17,6 +17,11 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <txlcn.tx.version>5.0.2.RELEASE</txlcn.tx.version>
+    </properties>
+
+
     <dependencies>
         <!-- 通用实体工具类 -->
         <dependency>
@@ -48,6 +53,22 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
+        <!--TC引入pom依赖-->
+        <dependency>
+            <groupId>com.codingapi.txlcn</groupId>
+            <artifactId>txlcn-tc</artifactId>
+            <version>${txlcn.tx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codingapi.txlcn</groupId>
+            <artifactId>txlcn-txmsg-netty</artifactId>
+            <version>${txlcn.tx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
