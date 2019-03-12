@@ -8,7 +8,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.context.WebApplicationContext;
+
+import java.util.Map;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -43,11 +47,17 @@ public abstract class APIBaseTest extends Thread {
                 .andReturn().getResponse().getContentAsString();
     }
 
-    protected void postRequest(String url, String name, String value) throws Exception {
+    protected void postRequest(String url, Map<String, String> paramsMap) throws Exception {
+
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+
+        for (String param : paramsMap.keySet()) {
+            params.add(param, paramsMap.get(param));
+        }
 
         this.mockMvc
                 .perform(post(url)
-                        .param(name, value)
+                        .params(params)
                         .characterEncoding("utf-8"))
                 .andExpect(status().isOk())
                 .andDo(print())
@@ -76,24 +86,30 @@ public abstract class APIBaseTest extends Thread {
                 .andReturn().getResponse().getContentAsString();
     }
 
-    protected void getRequest(String url, String name, String value) throws Exception {
+    protected void getRequest(String url, Map<String, String> paramsMap) throws Exception {
+
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+
+        for (String param : paramsMap.keySet()) {
+            params.add(param, paramsMap.get(param));
+        }
 
         this.mockMvc
                 .perform(get(url)
-                        .param(name, value)
+                        .params(params)
                         .characterEncoding("utf-8"))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andReturn().getResponse().getContentAsString();
     }
 
-    protected void getRequest(String url, String name1, String value1, String name2, String value2) throws Exception {
+    protected void getRequest(String url, String content) throws Exception {
 
         this.mockMvc
                 .perform(get(url)
-                        .param(name1, value1)
-                        .param(name2, value2)
-                        .characterEncoding("utf-8"))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8")
+                        .content(content))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andReturn().getResponse().getContentAsString();

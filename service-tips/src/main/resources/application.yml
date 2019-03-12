@@ -79,7 +79,7 @@ management:
 #TC配置信息
 tx-lcn:
   client:
-    manager-address: 127.0.0.1:8070
+    manager-address:
 #TC日志
 logging:
   level:
