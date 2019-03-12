@@ -29,6 +29,7 @@
         <module>service-turbine</module>
         <module>service-zuul</module>
         <module>activity-api</module>
+        <module>tx-manager</module>
     </modules>
 
     <properties>
