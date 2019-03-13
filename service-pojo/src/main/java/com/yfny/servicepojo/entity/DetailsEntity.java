@@ -23,7 +23,7 @@ public class DetailsEntity implements Serializable {
     private String address;
 
     @Column(name = "userId")
-    private String userId;
+    private Long userId;
 
     public DetailsEntity() {
     }
@@ -56,11 +56,11 @@ public class DetailsEntity implements Serializable {
         this.address = address;
     }
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
