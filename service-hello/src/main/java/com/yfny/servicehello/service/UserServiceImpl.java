@@ -3,6 +3,10 @@ package com.yfny.servicehello.service;
 
 import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import com.github.pagehelper.PageHelper;
+import com.yfny.servicehello.mapper.CarMapper;
+import com.yfny.servicehello.mapper.DetailsMapper;
+import com.yfny.servicepojo.entity.CarEntity;
+import com.yfny.servicepojo.entity.DetailsEntity;
 import com.yfny.servicepojo.entity.UserEntity;
 import com.yfny.servicehello.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +23,12 @@ public class UserServiceImpl{
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private DetailsMapper detailsMapper;
+
+    @Autowired
+    private CarMapper carMapper;
 
 
     public UserEntity getUserById(long userId) {
@@ -49,9 +59,20 @@ public class UserServiceImpl{
     }
 
 
+    /**
+     * 删除包含外键
+     * @param userId
+     * @return
+     */
     @Transactional
     public boolean deleteUserById(long userId) {
         boolean result = false;
+        DetailsEntity detailsEntity = new DetailsEntity();
+        detailsEntity.setUserId(userId);
+        detailsMapper.delete(detailsEntity);
+        CarEntity carEntity = new CarEntity();
+        carEntity.setUserId(userId);
+        carMapper.delete(carEntity);
         userMapper.deleteByPrimaryKey(userId);
         result = true;
         return result;
