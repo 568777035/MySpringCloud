@@ -2,6 +2,7 @@ package com.yfny.activityapi.controller;
 
 import com.yfny.activityapi.service.ActivitiService;
 import com.yfny.activityapi.utils.ActivitiUtils;
+import com.yfny.activityapi.utils.FlowUtils;
 import org.activiti.engine.*;
 import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.impl.util.json.JSONArray;
@@ -44,6 +45,12 @@ public class ActivitiController {
 
     @Autowired
     private ActivitiService activitiService;
+
+    @Autowired
+    private ActivitiUtils activitiUtils;
+
+    @Autowired
+    private FlowUtils flowUtils;
 
     /**
      * 提交需求单
@@ -200,11 +207,11 @@ public class ActivitiController {
      * @param variables 流程变量
      * @return  下一个任务的ID
      */
-    @PostMapping(value = "/createTask")
-    public String createTask(@RequestParam String userId,@RequestParam String key,@RequestBody Map<String,Object> variables){
+    @PostMapping(value = "/createTask/{userId}/{key}")
+    public String createTask(@PathVariable String userId,@PathVariable String key,@RequestBody Map<String,Object> variables){
         try {
             //获取当前流程实例ID
-            String processInstanceId =  ActivitiUtils.getProcessInstance(userId,key).getId();
+            String processInstanceId =  activitiUtils.getProcessInstance(userId,key).getId();
             //查询第一个任务
             Task task = taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult();
             //设置流程任务变量
@@ -224,8 +231,8 @@ public class ActivitiController {
      * @param variables 流程变量
      * @return  返回下一个任务的ID
      */
-    @PostMapping(value = "/fulfilTask")
-    public String fulfilTask(@RequestParam String taskId,@RequestBody Map<String,Object> variables){
+    @PostMapping(value = "/fulfilTask/{taskId}")
+    public String fulfilTask(@PathVariable String taskId,@RequestBody Map<String,Object> variables){
         try {
             //根据任务ID获取当前任务实例
             Task task = this.taskService.createTaskQuery().taskId(taskId).singleResult();
@@ -247,11 +254,11 @@ public class ActivitiController {
      * @param variables 流程变量
      * @return  返回当前任务的ID
      */
-    @PostMapping(value = "/createFlow")
-    public String createFlow(@RequestParam String userId,@RequestParam String key,@RequestBody Map<String,Object> variables){
+    @PostMapping(value = "/createFlow/{userId}/{key}")
+    public String createFlow(@PathVariable String userId,@PathVariable String key,@RequestBody Map<String,Object> variables){
         try {
             //获取当前流程实例ID
-            String processInstanceId =  ActivitiUtils.getProcessInstance(userId,key).getId();
+            String processInstanceId =  activitiUtils.getProcessInstance(userId,key).getId();
             //查询第一个任务
             Task task = taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult();
             //设置流程任务变量
@@ -263,18 +270,17 @@ public class ActivitiController {
     }
 
     /**
-     * 根据当前任务ID获取流程图并高亮显示当前任务
-     * @param taskId    当前任务ID
+     * 根据流程实例ID获取流程图
+     * @param processInstanceId    流程实例ID
      * @param response
      */
-    @GetMapping(value = "/image")
-    public void image(@RequestParam String taskId,
+    @GetMapping(value = "/getImage/{processInstanceId}")
+    public void getImage(@PathVariable String processInstanceId,
                       HttpServletResponse response) {
         try {
-            //获取当前流程任务实例对象
-            Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
             //根据当前流程实例ID获取图片输入流
-            InputStream is = activitiService.getDiagram(task.getProcessInstanceId());
+//            InputStream is = activitiService.getDiagram(task.getProcessInstanceId());
+            InputStream is = flowUtils.getResourceDiagramInputStream(processInstanceId);
             if (is == null)
                 return;
             response.setContentType("image/png");
