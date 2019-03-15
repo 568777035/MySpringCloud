@@ -20,7 +20,7 @@ server:
   servlet:
     session:
       timeout: 10
-  port: 8088
+  port: 8768
 #  微服务配置
 eureka:
   client:

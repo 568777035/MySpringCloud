@@ -1,15 +1,15 @@
 server:
-  port: ${peer1.server.port}
+  port: ${peer2.server.port}
 
 spring:
-  profiles: peer1
+  profiles: peer2
   zipkin:
     base-url: ${spring.zipkin.base-url}
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${peer1.eureka.client.serviceUrl.defaultZone}
+      defaultZone: ${peer2.eureka.client.serviceUrl.defaultZone}
 
 feign:
   hystrix:
@@ -27,4 +27,4 @@ ribbon:
 #TC配置信息
 tx-lcn:
   client:
-    manager-address: ${peer1.tx-lcn.client.manager-address}
+    manager-address: ${peer2.tx-lcn.client.manager-address}

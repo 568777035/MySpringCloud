@@ -1,5 +1,5 @@
 server:
-  port: 8864
+  port: 8862
 
 spring:
   profiles: peer2

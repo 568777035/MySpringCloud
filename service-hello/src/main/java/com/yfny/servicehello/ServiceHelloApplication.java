@@ -26,7 +26,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 public class ServiceHelloApplication {
 
     /**
-     * 访问地址 http://localhost:8766/actuator/hystrix.stream
+     * 访问地址 http://localhost:8769/actuator/hystrix.stream
      *
      * @param args
      */

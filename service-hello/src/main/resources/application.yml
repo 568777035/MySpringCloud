@@ -1,5 +1,5 @@
 server:
-  port: 8766
+  port: 8769
 spring:
   application:
     name: service-hello
@@ -39,11 +39,6 @@ spring:
         max-active: -1
   transaction:
     rollback-on-commit-failure: true
-#mybatis:（因为使用的是注解方式，所以这里不配置也可以的）
-#  type-aliases-package: com.yfny.servicepojo.entity
-#  configuration:
-#    map-underscore-to-camel-case: true
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 #mybatis中pagehelper分页插件
 pagehelper:
@@ -74,7 +69,7 @@ management:
         allowed-origins: "*"
         allowed-methods: "*"
 service:
-  tips-url: http://localhost:8762/
+  tips-url: http://localhost:8770/
 
 #TC配置信息
 tx-lcn:

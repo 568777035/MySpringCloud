@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ServiceTurbineApplication {
 
     /**
-     * http://localhost:8765/turbine.stream
+     * http://localhost:8766/turbine.stream
      */
 
     public static void main(String[] args) {

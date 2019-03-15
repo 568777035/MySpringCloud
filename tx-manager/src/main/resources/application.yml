@@ -4,14 +4,19 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 spring:
   application:
-    name: TransactionManager
+    name: tx-manager
   datasource:
   url: jdbc:mysql://127.0.0.1:3306/tx-manager?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
   username: root
   password: root
   driver-class-name: com.mysql.jdbc.Driver
 
+tx-lcn:
+  manager:
+    host: 127.0.0.1
+    port: 8763
+
 server:
-  port: 7970
+  port: 8764
 
 

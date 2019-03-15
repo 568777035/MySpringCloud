@@ -64,18 +64,18 @@ public class ExampleHelloController {
         if (StringUtils.isNumeric(goal)) {
             double goalInt = Double.parseDouble(goal);
             if (goalInt >= 90 && goalInt <= 100) {
-                goalResult = restTemplate.getForObject(url + "example/excellent", String.class);
+                goalResult = restTemplate.getForObject(url + "exampleTips/excellent", String.class);
             } else if (goalInt >= 70 && goalInt < 90) {
-                goalResult = restTemplate.getForObject(url + "example/good", String.class);
+                goalResult = restTemplate.getForObject(url + "exampleTips/good", String.class);
             } else if (goalInt >= 60 && goalInt < 70) {
-                goalResult = restTemplate.getForObject(url + "example/pass", String.class);
+                goalResult = restTemplate.getForObject(url + "exampleTips/pass", String.class);
             } else if (goalInt >= 0 && goalInt < 60) {
-                goalResult = restTemplate.getForObject(url + "example/fail", String.class);
+                goalResult = restTemplate.getForObject(url + "exampleTips/fail", String.class);
             } else {
-                goalResult = restTemplate.getForObject(url + "example/out", String.class);
+                goalResult = restTemplate.getForObject(url + "exampleTips/out", String.class);
             }
         } else {
-            goalResult = restTemplate.getForObject(url + "example/error", String.class);
+            goalResult = restTemplate.getForObject(url + "exampleTips/error", String.class);
         }
         return goalResult;
     }

@@ -1,5 +1,5 @@
 server:
-  port: 8767
+  port: 8770
 spring:
   application:
     name: service-tips

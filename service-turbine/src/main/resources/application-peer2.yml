@@ -1,0 +1,13 @@
+server:
+  port: ${peer2.server.port}
+
+spring:
+  profiles: peer2
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${peer2.eureka.client.serviceUrl.defaultZone}
+
+turbine:
+  app-config: ${turbine.app-config}
