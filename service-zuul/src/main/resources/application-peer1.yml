@@ -1,20 +1,31 @@
 server:
-  port: ${peer1.server.port}
+#  port: ${peer1.server.port}
+  port: 8040
 
 spring:
   profiles: peer1
+  application:
+    name: api-zuul
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: ${peer1.eureka.client.serviceUrl.defaultZone}
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${peer1.eureka.client.serviceUrl.defaultZone}
+      defaultZone: http://eureka:123456@peer1:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
 
 #ribbon请求连接的超时时间
-ribbon:
-  ConnectTimeout: ${ribbon.ConnectTimeout}
-  #请求处理的超时时间
-  ReadTimeout: ${ribbon.ReadTimeout}
-  #对当前服务的重试次数（第一次分配给8765的时候，如果404，则再重试MaxAutoRetries次，如果还是404，则切换到其他服务MaxAutoRetriesNextServer决定）
-  MaxAutoRetries: ${ribbon.MaxAutoRetries}
-  #切换服务的次数(比如本次请求分配给8765处理，发现404，则切换分配给8865处理，如果还是404，则返回404给客户端）
-  MaxAutoRetriesNextServer: ${ribbon.MaxAutoRetriesNextServer}
+#ribbon:
+#  ConnectTimeout: ${ribbon.ConnectTimeout}
+#  #请求处理的超时时间
+#  ReadTimeout: ${ribbon.ReadTimeout}
+#  #对当前服务的重试次数（第一次分配给8765的时候，如果404，则再重试MaxAutoRetries次，如果还是404，则切换到其他服务MaxAutoRetriesNextServer决定）
+#  MaxAutoRetries: ${ribbon.MaxAutoRetries}
+#  #切换服务的次数(比如本次请求分配给8765处理，发现404，则切换分配给8865处理，如果还是404，则返回404给客户端）
+#  MaxAutoRetriesNextServer: ${ribbon.MaxAutoRetriesNextServer}

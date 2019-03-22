@@ -1,19 +1,17 @@
 server:
-  port: 8761
+  port: 8080
 
 spring:
-  profiles: peer1
-
+  application:
+    name: service-oauth2
   security:
     basic:
       enabled: true
     user:
-      name: eureka
+      name: user
       password: 123456
 
 #eureka:
-#  instance:
-#    hostname: peer1
 #  client:
 #    serviceUrl:
-#      defaultZone: http://peer2:8861/eureka/
+#      defaultZone: http://eureka:123456@peer1:8761/eureka/

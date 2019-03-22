@@ -29,7 +29,11 @@
         <module>service-turbine</module>
         <module>service-zuul</module>
         <module>activity-api</module>
+        <module>service-jwt</module>
         <module>tx-manager</module>
+        <module>service-security</module>
+        <module>security-common</module>
+        <module>server-oauth2</module>
     </modules>
 
     <properties>
